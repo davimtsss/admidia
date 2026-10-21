@@ -61,15 +61,18 @@ h1 span{color:var(--blue)}
 .como .wrap,.onde-h .wrap{max-width:1240px;margin:0 auto;padding:54px 20px 20px}
 .sec-k{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
 h2{font-size:clamp(28px,4vw,46px);line-height:1;letter-spacing:-.02em;margin:0 0 26px;font-weight:900;color:var(--navy)}h2 span{color:var(--blue)}
-h2.big{font-size:clamp(44px,8vw,110px);line-height:.9;letter-spacing:-.03em;-webkit-text-stroke:2px var(--navy);color:transparent;margin-bottom:10px}
+.sub{color:var(--muted);font-size:15px;font-weight:500;margin:-14px 0 18px}
 .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .s3{background:#fff;border:2px solid #eef3fa;border-radius:var(--r);padding:22px 20px;box-shadow:0 2px 12px #000e290d}
 .s3 i{font-style:normal;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:900;margin-bottom:12px}
 .s3 b{display:block;font-size:17px;margin-bottom:6px}.s3 p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5;font-weight:500}
-.gal .wrap{max-width:1240px;margin:0 auto;padding:54px 20px 10px}.gal h2{margin-bottom:18px}
-.gtrack{display:flex;gap:14px;overflow-x:auto;padding:6px 20px 24px;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}.gtrack::-webkit-scrollbar{display:none}
-.gi{flex:0 0 auto;width:min(300px,70vw);aspect-ratio:4/5;border-radius:18px;overflow:hidden;scroll-snap-align:start;box-shadow:0 10px 30px #000e2920;background:#000}.gi img,.gi video{width:100%;height:100%;object-fit:cover;display:block}
-@media(min-width:1280px){.gtrack{padding-left:calc((100vw - 1200px)/2)}}
+.marq{overflow:hidden;padding:14px 0;background:#fff;border-bottom:1px solid var(--line)}
+.mtrack{display:flex;gap:10px;width:max-content;animation:marq 60s linear infinite}
+.marq:hover .mtrack{animation-play-state:paused}
+.mi{flex:0 0 auto;width:112px;height:140px;border-radius:12px;overflow:hidden;background:#000}
+.mi img,.mi video{width:100%;height:100%;object-fit:cover;display:block}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.mtrack{animation:none}}
 .contato{background:#000E29;color:#fff;margin-top:40px;position:relative;overflow:hidden}
 .contato::before{content:'';position:absolute;inset:0;background:radial-gradient(800px 400px at 90% 10%,#0092ff66,transparent 60%)}
 .contato .wrap{max-width:1240px;margin:0 auto;padding:64px 20px;position:relative;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
@@ -182,6 +185,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
   <div class="si"><b>Arte inclusa</b><span>produção sem custo</span></div>
   <div class="si"><b>6 ou 12</b><span>meses de plano</span></div>
 </div></section>
+<section class="marq" aria-label="Nossas telas na rua"><div class="mtrack"><div class="mi"><video src="video.mp4" poster="poster.jpg" autoplay muted loop playsinline preload="metadata"></video></div><div class="mi"><img loading="lazy" src="galeria/g12.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g01.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g06.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g04.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g03.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g09.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g07.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g05.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g02.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g10.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g08.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g11.jpg" alt=""></div><div class="mi"><video src="video.mp4" poster="poster.jpg" autoplay muted loop playsinline preload="metadata"></video></div><div class="mi"><img loading="lazy" src="galeria/g12.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g01.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g06.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g04.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g03.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g09.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g07.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g05.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g02.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g10.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g08.jpg" alt=""></div><div class="mi"><img loading="lazy" src="galeria/g11.jpg" alt=""></div></div></section>
 <section class="como" id="como"><div class="wrap">
   <div class="sec-k">Como funciona</div>
   <h2>+ impacto. + conversão.<br><span>+ visibilidade.</span></h2>
@@ -191,12 +195,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
     <div class="s3"><i>3</i><b>Receba a proposta</b><p>Pelo WhatsApp ou em PDF, pronta pra aprovar. A gente cuida da arte e da veiculação.</p></div>
   </div>
 </div></section>
-<section class="gal"><div class="wrap"><div class="sec-k">Nossas telas na rua</div><h2>Onde a cidade <span>olha</span>.</h2></div>
-  <div class="gtrack" id="gtrack">
-    <div class="gi"><video src="video.mp4" poster="poster.jpg" autoplay muted loop playsinline preload="metadata"></video></div>
-    <div class="gi"><img loading="lazy" src="galeria/g12.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g01.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g06.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g04.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g03.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g09.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g07.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g05.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g02.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g10.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g08.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g11.jpg" alt=""></div>
-  </div></section>
-<div class="onde-h" id="onde"><div class="wrap"><div class="sec-k">Onde estamos</div><h2 class="big">Escolha<br>seus pontos</h2></div></div>
+<div class="onde-h" id="onde"><div class="wrap"><div class="sec-k">Onde estamos</div><h2>Escolha <span>seus pontos</span></h2><p class="sub">Toque no mapa ou nos cards, adicione ao pacote e veja o total na hora.</p></div></div>
 
 <div class="ctrl"><div class="wrap">
   <div class="chips" id="chips"></div>
