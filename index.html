@@ -11,30 +11,77 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071a3d'/%3E%3Ctext x='32' y='42' font-family='Montserrat,Arial' font-weight='900' font-size='28' fill='%23fff' text-anchor='middle'%3EAD%3C/text%3E%3C/svg%3E">
 <style>
-:root{--navy:#071a3d;--navy2:#0d2a5e;--blue:#1569e0;--blue2:#2f8bff;--ink:#101828;--muted:#5b6b84;--faint:#8a97ad;--line:#e4e9f1;--bg:#f4f6fa;--card:#fff;--green:#1a9e5c;--red:#d03b3b;--f:'Montserrat',-apple-system,Segoe UI,Roboto,sans-serif;--r:16px}
+:root{--navy:#000E29;--navy2:#001a4d;--blue:#0092FF;--blue2:#33a9ff;--ink:#101828;--muted:#5b6b84;--faint:#8a97ad;--line:#e4e9f1;--bg:#f4f6fa;--card:#fff;--green:#1a9e5c;--red:#d03b3b;--f:'Montserrat',-apple-system,Segoe UI,Roboto,sans-serif;--r:16px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--f);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+body{margin:0;font-family:var(--f);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
 button{font-family:var(--f)}
 a{color:inherit}
 /* header */
-.hero{background:radial-gradient(1200px 500px at 15% -10%,#2f8bff55,transparent 60%),linear-gradient(135deg,#061634 0%,#0c2b64 55%,#1358c4 100%);color:#fff;padding:22px 20px 26px;position:relative;overflow:hidden}
+.hero{background:radial-gradient(900px 420px at 85% 115%,#0092ff80,transparent 62%),radial-gradient(700px 320px at -5% -10%,#0092ff40,transparent 60%),#000E29;color:#fff;padding:22px 20px 26px;position:relative;overflow:hidden}
 .hero .wrap{max-width:1240px;margin:0 auto}
 .top{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid #fff;border-radius:7px;padding:3px 7px;line-height:1;text-decoration:none}
-.logo b{font-size:18px;font-weight:900;letter-spacing:.02em}.logo small{font-size:7.5px;font-weight:700;letter-spacing:.18em;margin-top:2px}
+.logo img{height:34px;display:block}@media(max-width:700px){.logo img{height:28px}}
 .cartbtn{display:flex;align-items:center;gap:10px;background:#fff;color:var(--navy);border:0;border-radius:999px;padding:10px 16px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 8px 24px #0004;white-space:nowrap}
 .cartbtn .n{background:var(--blue);color:#fff;border-radius:999px;min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;padding:0 7px}
 .cartbtn.pulse{animation:pulse .35s ease}
 @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.07)}100%{transform:scale(1)}}
 h1{font-size:clamp(28px,4.6vw,54px);line-height:1;letter-spacing:-.02em;margin:26px 0 10px;font-weight:900;text-transform:uppercase}
-.lead{font-size:clamp(14px,1.6vw,17px);max-width:720px;color:#dbe6ff;margin:0 0 18px;font-weight:500}
+.lead{font-size:clamp(14px,1.6vw,17px);max-width:720px;color:#cfe6ff;margin:0 0 18px;font-weight:500}
 .stats{display:flex;gap:10px;flex-wrap:wrap}
 .stat{background:#ffffff14;border:1px solid #ffffff2a;border-radius:12px;padding:10px 14px;backdrop-filter:blur(6px)}
 .stat b{display:block;font-size:20px;font-weight:900}.stat span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#cfe0ff;font-weight:700}
 .steps{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap}
 .step{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#e8f0ff}.step i{font-style:normal;width:24px;height:24px;border-radius:50%;background:#fff;color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:12px}
+
+.hero{min-height:min(88vh,760px);display:flex;flex-direction:column;justify-content:flex-start;padding:18px 20px 60px;background:#000E29}
+.hbg{position:absolute;inset:0;background:url(capa.jpg) center 30%/cover no-repeat;opacity:.35;filter:blur(18px) saturate(1.2);transform:scale(1.1)}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#000E29cc 0%,#000E2966 40%,#000E29f2 100%),radial-gradient(700px 400px at 85% 20%,#0092ff55,transparent 60%)}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.nav{display:flex;gap:22px;margin-left:auto;margin-right:18px}.nav a{color:#dbe9ff;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.02em}.nav a:hover{color:#fff}
+.hgrid{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center;margin-top:clamp(30px,6vh,70px)}
+.hc{max-width:760px}
+.capa{position:relative;justify-self:end;width:min(420px,100%)}
+.capa img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:24px;display:block;box-shadow:0 30px 80px #00000080,0 0 0 1px #ffffff22}
+.capa-tag{position:absolute;left:14px;bottom:14px;background:#000e29cc;color:#fff;font-size:12px;font-weight:700;padding:7px 11px;border-radius:999px;backdrop-filter:blur(6px)}
+.pframe{width:min(300px,100%);aspect-ratio:9/16;border-radius:34px;padding:10px;background:#0b1430;box-shadow:0 30px 80px #00000080,0 0 0 2px #ffffff22,0 0 60px #0092ff55;position:relative}
+.pframe::before{content:'';position:absolute;top:18px;left:50%;transform:translateX(-50%);width:90px;height:22px;background:#0b1430;border-radius:999px;z-index:2}
+.pframe video{width:100%;height:100%;object-fit:cover;border-radius:26px;display:block;background:#000}
+@media(max-width:900px){.hgrid{grid-template-columns:1fr}.capa{justify-self:center;width:min(340px,100%);margin-top:6px}}
+.kicker{display:inline-block;background:#0092ff;color:#fff;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-radius:999px;margin-bottom:18px}
+h1{font-size:clamp(34px,6vw,76px);line-height:.98;letter-spacing:-.025em;margin:0 0 18px;font-weight:900;text-transform:none}
+h1 span{color:var(--blue)}
+.lead{font-size:clamp(15px,1.7vw,19px);max-width:640px;color:#dbe9ff;margin:0 0 26px;font-weight:500;line-height:1.5}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:14px 22px;font-weight:800;font-size:14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.p{background:var(--blue);color:#fff;box-shadow:0 10px 30px #0092ff55}.btn.w{background:#fff;color:var(--navy)}
+.strip{background:var(--blue);color:#fff}
+.strip .wrap{max-width:1240px;margin:0 auto;padding:16px 20px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.si{display:flex;flex-direction:column;align-items:center;text-align:center;padding:6px 4px;border-right:1px solid #ffffff33}.si:last-child{border-right:0}
+.si b{font-size:22px;font-weight:900;letter-spacing:-.01em}.si span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#e3f1ff;margin-top:2px}
+.como .wrap,.onde-h .wrap{max-width:1240px;margin:0 auto;padding:54px 20px 20px}
+.sec-k{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+h2{font-size:clamp(28px,4vw,46px);line-height:1;letter-spacing:-.02em;margin:0 0 26px;font-weight:900;color:var(--navy)}h2 span{color:var(--blue)}
+h2.big{font-size:clamp(44px,8vw,110px);line-height:.9;letter-spacing:-.03em;-webkit-text-stroke:2px var(--navy);color:transparent;margin-bottom:10px}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.s3{background:#fff;border:2px solid #eef3fa;border-radius:var(--r);padding:22px 20px;box-shadow:0 2px 12px #000e290d}
+.s3 i{font-style:normal;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:900;margin-bottom:12px}
+.s3 b{display:block;font-size:17px;margin-bottom:6px}.s3 p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5;font-weight:500}
+.gal .wrap{max-width:1240px;margin:0 auto;padding:54px 20px 10px}.gal h2{margin-bottom:18px}
+.gtrack{display:flex;gap:14px;overflow-x:auto;padding:6px 20px 24px;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}.gtrack::-webkit-scrollbar{display:none}
+.gi{flex:0 0 auto;width:min(300px,70vw);aspect-ratio:4/5;border-radius:18px;overflow:hidden;scroll-snap-align:start;box-shadow:0 10px 30px #000e2920;background:#000}.gi img,.gi video{width:100%;height:100%;object-fit:cover;display:block}
+@media(min-width:1280px){.gtrack{padding-left:calc((100vw - 1200px)/2)}}
+.contato{background:#000E29;color:#fff;margin-top:40px;position:relative;overflow:hidden}
+.contato::before{content:'';position:absolute;inset:0;background:radial-gradient(800px 400px at 90% 10%,#0092ff66,transparent 60%)}
+.contato .wrap{max-width:1240px;margin:0 auto;padding:64px 20px;position:relative;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
+.contato h2{color:#fff;font-size:clamp(40px,7vw,96px);line-height:.9;margin:0 0 14px}.contato h2 span{color:var(--blue)}
+.contato p{color:#dbe9ff;font-size:16px;max-width:520px;line-height:1.5;margin:0 0 22px}
+.cbox{background:#ffffff10;border:1px solid #ffffff22;border-radius:var(--r);padding:22px;backdrop-filter:blur(8px)}
+.cbox .zb{width:100%;margin-bottom:8px;font-size:14px;padding:14px}
+.quote{text-align:center;padding:44px 20px 10px;font-size:clamp(20px,3vw,32px);font-weight:900;color:var(--navy);letter-spacing:-.02em;line-height:1.15}.quote span{color:var(--blue)}
+@media(max-width:900px){.strip .wrap{grid-template-columns:repeat(3,1fr)}.si:nth-child(3){border-right:0}.steps3{grid-template-columns:1fr}.contato .wrap{grid-template-columns:1fr}.nav{display:none}}
+@media(max-width:600px){.strip .wrap{grid-template-columns:repeat(2,1fr)}.si{border-right:0}.hero{min-height:0;padding-bottom:44px}}
 /* controls */
-.ctrl{position:sticky;top:0;z-index:50;background:#ffffffee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.ctrl{position:sticky;top:0;z-index:50;background:#ffffffe6;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .ctrl .wrap{max-width:1240px;margin:0 auto;padding:10px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .chips{display:flex;gap:6px;flex-wrap:wrap;flex:1}
 .chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
@@ -43,7 +90,8 @@ h1{font-size:clamp(28px,4.6vw,54px);line-height:1;letter-spacing:-.02em;margin:2
 .search{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-family:var(--f);font-size:14px;min-width:180px;background:#fff}
 .sel{border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-family:var(--f);font-size:13px;font-weight:600;background:#fff;color:var(--muted)}
 /* layout */
-.main{max-width:1240px;margin:0 auto;padding:18px 20px 120px}
+.main{max-width:1240px;margin:0 auto;padding:18px 20px 120px;position:relative}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(1100px 520px at -8% 28%,#0092ff2e,transparent 62%),radial-gradient(900px 380px at 108% 78%,#0092ff22,transparent 60%),#fff}
 #map{height:420px;border-radius:var(--r);box-shadow:0 10px 30px #0b1f4a14;margin-bottom:18px;z-index:1}
 .leaflet-popup-content-wrapper{border-radius:14px;font-family:var(--f)}.leaflet-popup-content{margin:12px 14px;font-size:13px}
 .pp b{font-size:14px;display:block;margin-bottom:2px}.pp .m{color:var(--muted);font-size:12px}.pp .pr{font-weight:800;margin-top:6px;font-size:14px}
@@ -51,13 +99,13 @@ h1{font-size:clamp(28px,4.6vw,54px);line-height:1;letter-spacing:-.02em;margin:2
 .pp button.rm{background:#eef2f8;color:var(--ink)}
 .count{font-size:13px;color:var(--muted);margin:0 0 12px;font-weight:600}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
-.card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 10px #0b1f4a0d;border:2px solid transparent;transition:transform .15s,box-shadow .15s,border-color .15s;display:flex;flex-direction:column}
+.card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 12px #000e2912;border:2px solid #eef3fa;transition:transform .15s,box-shadow .15s,border-color .15s;display:flex;flex-direction:column}
 .card:hover{transform:translateY(-2px);box-shadow:0 12px 30px #0b1f4a1a}
 .card.sel{border-color:var(--blue)}
 .ph{position:relative;aspect-ratio:4/3;background:#dfe6f0;overflow:hidden}
 .ph img{width:100%;height:100%;object-fit:cover;display:block}
 .ph .cat{position:absolute;left:10px;top:10px;background:#ffffffee;color:var(--navy);font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
-.ph .fl{position:absolute;right:10px;bottom:10px;background:#071a3dd9;color:#fff;font-size:11.5px;font-weight:700;padding:5px 9px;border-radius:999px}
+.ph .fl{position:absolute;right:10px;bottom:10px;background:#000e29d9;color:#fff;font-size:11.5px;font-weight:700;padding:5px 9px;border-radius:999px}
 .ph .chk{position:absolute;right:10px;top:10px;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;display:none;align-items:center;justify-content:center;font-weight:900}
 .card.sel .ph .chk{display:inline-flex}
 .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
@@ -66,8 +114,8 @@ h1{font-size:clamp(28px,4.6vw,54px);line-height:1;letter-spacing:-.02em;margin:2
 .row{display:flex;align-items:flex-end;justify-content:space-between;margin-top:auto;padding-top:8px;gap:10px}
 .pr{font-weight:900;font-size:19px;letter-spacing:-.01em}.pr small{font-size:11px;color:var(--faint);font-weight:700;margin-left:2px}
 .pr.sc{font-size:13px;color:var(--muted)}
-.add{border:0;background:var(--navy);color:#fff;border-radius:11px;padding:10px 14px;font-weight:800;font-size:13px;cursor:pointer;white-space:nowrap}
-.add.on{background:#eaf1ff;color:var(--blue)}
+.add{border:0;background:var(--blue);color:#fff;border-radius:11px;padding:10px 14px;font-weight:800;font-size:13px;cursor:pointer;white-space:nowrap}
+.add.on{background:var(--navy);color:#fff}
 .tag{font-size:10.5px;font-weight:800;color:var(--red);letter-spacing:.04em;text-transform:uppercase}
 /* cart */
 .ov{position:fixed;inset:0;background:#07122a66;z-index:90;display:none}.ov.open{display:block}
@@ -110,16 +158,45 @@ h1{font-size:clamp(28px,4.6vw,54px);line-height:1;letter-spacing:-.02em;margin:2
 </style>
 </head>
 <body>
-<header class="hero"><div class="wrap">
-  <div class="top">
-    <a class="logo" href="#"><b>AD</b><small>MÍDIA</small></a>
-    <button class="cartbtn" id="cartbtn" onclick="openCart()"><span class="n" id="cn">0</span><span class="t">Meu pacote</span><span id="ct">R$ 0,00</span></button>
+<header class="hero" id="topo">
+  <div class="hbg"></div>
+  <div class="wrap">
+    <div class="top">
+      <a class="logo" href="#topo"><img src="logo.png" alt="ADmídia"></a>
+      <nav class="nav"><a href="#onde">Onde estamos</a><a href="#como">Como funciona</a><a href="#contato">Fale conosco</a></nav>
+      <button class="cartbtn" id="cartbtn" onclick="openCart()"><span class="n" id="cn">0</span><span class="t">Meu pacote</span><span id="ct">R$ 0,00</span></button>
+    </div>
+    <div class="hgrid"><div class="hc">
+      <div class="kicker">A maior rede de telas digitais da região</div>
+      <h1>Seu maior ativo<br>é a sua marca.<br><span>Anuncie!</span></h1>
+      <p class="lead">Sua marca vista <b style="color:#fff">+ de 180 vezes por dia</b> em painéis de LED e telas indoor, nos lugares onde Tubarão e Capivari de Baixo passam, param e consomem. Escolha os pontos, monte o pacote e receba a proposta na hora.</p>
+      <div class="ctas"><a class="btn p" href="#onde">Montar minha campanha</a><button class="btn w" onclick="zapTopo()">💬 Falar no WhatsApp</button></div>
+    </div>
+    <div class="capa"><img src="capa.jpg" alt="Painel de LED ADmídia em Tubarão"><span class="capa-tag">📍 Painel de LED · Tubarão</span></div></div>
   </div>
-  <h1>Monte sua campanha<br>na maior rede de telas da região</h1>
-  <p class="lead">Escolha os pontos onde a sua marca vai aparecer em Tubarão e Capivari de Baixo, veja o total na hora e receba a proposta no WhatsApp ou em PDF.</p>
-  <div class="stats" id="stats"></div>
-  <div class="steps"><span class="step"><i>1</i> Escolha os pontos</span><span class="step"><i>2</i> Defina o plano (6 ou 12 meses)</span><span class="step"><i>3</i> Receba a proposta</span></div>
-</div></header>
+</header>
+<section class="strip"><div class="wrap">
+  <div class="si"><b id="st-n">47</b><span>pontos ativos</span></div>
+  <div class="si"><b id="st-f">2,0 mi</b><span>pessoas por mês</span></div>
+  <div class="si"><b>+180</b><span>exibições por dia</span></div>
+  <div class="si"><b>Arte inclusa</b><span>produção sem custo</span></div>
+  <div class="si"><b>6 ou 12</b><span>meses de plano</span></div>
+</div></section>
+<section class="como" id="como"><div class="wrap">
+  <div class="sec-k">Como funciona</div>
+  <h2>+ impacto. + conversão.<br><span>+ visibilidade.</span></h2>
+  <div class="steps3">
+    <div class="s3"><i>1</i><b>Escolha os pontos</b><p>No mapa ou na lista, filtre por categoria e bairro e adicione ao pacote.</p></div>
+    <div class="s3"><i>2</i><b>Defina o plano</b><p>6 ou 12 meses. A partir de 4 pontos você ganha 20% — e 12 meses dá mais 7%.</p></div>
+    <div class="s3"><i>3</i><b>Receba a proposta</b><p>Pelo WhatsApp ou em PDF, pronta pra aprovar. A gente cuida da arte e da veiculação.</p></div>
+  </div>
+</div></section>
+<section class="gal"><div class="wrap"><div class="sec-k">Nossas telas na rua</div><h2>Onde a cidade <span>olha</span>.</h2></div>
+  <div class="gtrack" id="gtrack">
+    <div class="gi"><video src="video.mp4" poster="poster.jpg" autoplay muted loop playsinline preload="metadata"></video></div>
+    <div class="gi"><img loading="lazy" src="galeria/g12.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g01.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g06.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g04.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g03.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g09.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g07.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g05.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g02.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g10.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g08.jpg" alt=""></div><div class="gi"><img loading="lazy" src="galeria/g11.jpg" alt=""></div>
+  </div></section>
+<div class="onde-h" id="onde"><div class="wrap"><div class="sec-k">Onde estamos</div><h2 class="big">Escolha<br>seus pontos</h2></div></div>
 
 <div class="ctrl"><div class="wrap">
   <div class="chips" id="chips"></div>
@@ -131,8 +208,13 @@ h1{font-size:clamp(28px,4.6vw,54px);line-height:1;letter-spacing:-.02em;margin:2
   <div id="map"></div>
   <div class="count" id="count"></div>
   <div class="grid" id="grid"></div>
-  <div class="foot">ADmídia · Tubarão/SC · Valores mensais. Proposta sujeita a disponibilidade do ponto.</div>
 </main>
+<div class="quote">Grandes marcas não são descobertas.<br><span>São lembradas.</span></div>
+<section class="contato" id="contato"><div class="wrap">
+  <div><div class="sec-k" style="color:#9fd3ff">Vamos conversar</div><h2>Fale<br><span>conosco</span></h2><p>Monte seu pacote aqui mesmo ou chama a gente no WhatsApp — a proposta sai no mesmo dia, com arte inclusa.</p></div>
+  <div class="cbox" id="cbox"></div>
+</div></section>
+<div class="foot">ADmídia · Tubarão/SC · Valores mensais. Proposta sujeita a disponibilidade do ponto.</div>
 
 <div class="ov" id="ov" onclick="closeCart()"></div>
 <aside class="cart" id="cart" aria-label="Meu pacote">
@@ -148,7 +230,7 @@ h1{font-size:clamp(28px,4.6vw,54px);line-height:1;letter-spacing:-.02em;margin:2
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
 // ===== CONFIG (edite aqui) =====
-const ZAP={ 'Davi':'', 'Matheus':'' };            // números com DDD, só dígitos. Ex: '48999998888'
+const ZAP={ 'Davi':'48991079940', 'Matheus':'48999292439' };            // números com DDD, só dígitos. Ex: '48999998888'
 const DESC_QTD={min:4,pct:20};                    // 4 ou mais pontos elegíveis → 20%
 const DESC_12M=7;                                 // plano 12 meses → +7%
 const PLANOS=[6,12];
@@ -163,9 +245,9 @@ function load(){try{const s=JSON.parse(localStorage.getItem('admidia_pacote')||'
   const h=new URLSearchParams(location.hash.slice(1));if(h.get('p')){SEL=new Set(h.get('p').split(',').map(Number).filter(Boolean));if(PLANOS.includes(+h.get('m')))plano=+h.get('m');}}
 function save(){try{localStorage.setItem('admidia_pacote',JSON.stringify({ids:[...SEL],plano,cliente}));}catch(_){}
   const p=[...SEL].join(',');history.replaceState(null,'',p?('#p='+p+'&m='+plano):location.pathname);}
-fetch('pontos.json').then(r=>r.json()).then(d=>{PONTOS=d;load();initMap();renderChips();render();renderCart();stats();});
-function stats(){const fl=PONTOS.reduce((a,p)=>a+(p.fluxo||0),0);const cats=new Set(PONTOS.map(p=>p.cat)).size;
-  document.getElementById('stats').innerHTML='<div class="stat"><b>'+PONTOS.length+'</b><span>pontos</span></div><div class="stat"><b>'+(fl/1e6).toFixed(1).replace('.',',')+' mi</b><span>pessoas / mês</span></div><div class="stat"><b>'+cats+'</b><span>categorias</span></div><div class="stat"><b>2</b><span>cidades</span></div>';}
+fetch('pontos.json').then(r=>r.json()).then(d=>{PONTOS=d;load();initMap();renderChips();render();renderCart();stats();document.getElementById('cbox').innerHTML=Object.keys(ZAP).map(n=>'<button class="zb" onclick="zap(\''+n+'\')">💬 WhatsApp · '+n+'</button>').join('')+'<button class="pb" style="width:100%;border-color:#fff;color:#fff;background:transparent" onclick="openCart()">Ver meu pacote</button>';});
+function stats(){const fl=PONTOS.reduce((a,p)=>a+(p.fluxo||0),0);document.getElementById('st-n').textContent=PONTOS.length;document.getElementById('st-f').textContent=(fl/1e6).toFixed(1).replace('.',',')+' mi';}
+function zapTopo(){const n=Object.values(ZAP).find(Boolean);const t=encodeURIComponent('Olá! Quero saber mais sobre anunciar na ADmídia.');window.open(n?('https://wa.me/55'+n+'?text='+t):('https://wa.me/?text='+t),'_blank');}
 function renderChips(){const cats=['Todos',...new Set(PONTOS.map(p=>p.cat))];document.getElementById('chips').innerHTML=cats.map(c=>'<button class="chip '+(cat===c?'on':'')+'" onclick="setCat(\''+c.replace(/'/g,"\\'")+'\')">'+(c!=='Todos'?'<span class="dot" style="background:'+(CATCOL[c]||'#999')+'"></span>':'')+esc(c)+'</button>').join('');}
 function setCat(c){cat=c;renderChips();render();}
 function lista(){const q=(document.getElementById('q').value||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');const ord=document.getElementById('ord').value;
@@ -219,8 +301,8 @@ function texto(){const c=calc();const d=new Date().toLocaleDateString('pt-BR');
 function zap(n){const num=ZAP[n];const t=encodeURIComponent(texto());if(!num){toast('Número do '+n+' ainda não configurado');window.open('https://wa.me/?text='+t,'_blank');return;}window.open('https://wa.me/55'+num+'?text='+t,'_blank');}
 function proposta(){const c=calc();const w=window.open('','_blank');if(!w){toast('Libera o pop-up pra gerar o PDF');return;}const d=new Date();const val=new Date(d.getTime()+7*86400000);
   const rows=c.its.map((p,i)=>'<tr><td>'+(i+1)+'</td><td><img src="'+new URL(p.foto,location.href).href+'"></td><td><b>'+esc(p.nome)+'</b><br><small>'+esc(p.cat)+' · '+esc(p.end)+'</small></td><td class="r">'+(p.fluxo?k(p.fluxo):'—')+'</td><td class="r">'+(p.valor?brl(p.valor):'sob consulta')+'</td><td class="r"><b>'+(p.valor?brl(precoItem(p,c)):'—')+'</b></td></tr>').join('');
-  w.document.write('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Proposta ADmídia'+(cliente?' · '+esc(cliente):'')+'</title><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet"><style>@page{size:A4;margin:14mm}body{font-family:Montserrat,Arial,sans-serif;color:#101828;margin:0;padding:0}.hd{background:linear-gradient(135deg,#061634,#1358c4);color:#fff;padding:26px 28px;border-radius:14px;display:flex;justify-content:space-between;align-items:flex-end}.hd h1{margin:0;font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em}.hd .s{font-size:12px;color:#cfe0ff;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.lg{border:2px solid #fff;border-radius:7px;padding:4px 8px;display:inline-flex;flex-direction:column;align-items:center;line-height:1}.lg b{font-size:18px;font-weight:900}.lg small{font-size:7.5px;letter-spacing:.18em;font-weight:700;margin-top:2px}.meta{display:flex;gap:28px;margin:18px 4px 10px;font-size:12.5px;color:#5b6b84;font-weight:600}.meta b{color:#101828;display:block;font-size:14px}table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}th{text-align:left;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#5b6b84;padding:8px 6px;border-bottom:2px solid #dde3ec}td{padding:8px 6px;border-bottom:1px solid #e8ecf3;vertical-align:middle}td img{width:64px;height:46px;object-fit:cover;border-radius:7px;display:block}small{color:#5b6b84;font-size:11px}.r{text-align:right;white-space:nowrap}.tot{margin-top:14px;margin-left:auto;width:320px;font-size:13px}.tot div{display:flex;justify-content:space-between;padding:4px 0;color:#5b6b84;font-weight:600}.tot .d{color:#1a9e5c}.tot .t{border-top:2px solid #101828;margin-top:6px;padding-top:8px;font-size:17px;font-weight:900;color:#101828}.ft{margin-top:26px;font-size:11.5px;color:#5b6b84;line-height:1.6}.ft b{color:#101828}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body>'
-    +'<div class="hd"><div><div class="s">Proposta comercial</div><h1>'+(cliente?esc(cliente):'Campanha ADmídia')+'</h1></div><div class="lg"><b>AD</b><small>MÍDIA</small></div></div>'
+  w.document.write('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Proposta ADmídia'+(cliente?' · '+esc(cliente):'')+'</title><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet"><style>@page{size:A4;margin:14mm}body{font-family:Montserrat,Arial,sans-serif;color:#101828;margin:0;padding:0}.hd{background:linear-gradient(135deg,#000E29,#0092FF);color:#fff;padding:26px 28px;border-radius:14px;display:flex;justify-content:space-between;align-items:flex-end}.hd h1{margin:0;font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em}.hd .s{font-size:12px;color:#cfe0ff;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.lg{border:2px solid #fff;border-radius:7px;padding:4px 8px;display:inline-flex;flex-direction:column;align-items:center;line-height:1}.lg b{font-size:18px;font-weight:900}.lg small{font-size:7.5px;letter-spacing:.18em;font-weight:700;margin-top:2px}.meta{display:flex;gap:28px;margin:18px 4px 10px;font-size:12.5px;color:#5b6b84;font-weight:600}.meta b{color:#101828;display:block;font-size:14px}table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}th{text-align:left;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#5b6b84;padding:8px 6px;border-bottom:2px solid #dde3ec}td{padding:8px 6px;border-bottom:1px solid #e8ecf3;vertical-align:middle}td img{width:64px;height:46px;object-fit:cover;border-radius:7px;display:block}small{color:#5b6b84;font-size:11px}.r{text-align:right;white-space:nowrap}.tot{margin-top:14px;margin-left:auto;width:320px;font-size:13px}.tot div{display:flex;justify-content:space-between;padding:4px 0;color:#5b6b84;font-weight:600}.tot .d{color:#1a9e5c}.tot .t{border-top:2px solid #101828;margin-top:6px;padding-top:8px;font-size:17px;font-weight:900;color:#101828}.ft{margin-top:26px;font-size:11.5px;color:#5b6b84;line-height:1.6}.ft b{color:#101828}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body>'
+    +'<div class="hd"><div><div class="s">Proposta comercial</div><h1>'+(cliente?esc(cliente):'Campanha ADmídia')+'</h1></div><img src="'+new URL('logo.png',location.href).href+'" style="height:34px"></div>'
     +'<div class="meta"><div>Data<b>'+d.toLocaleDateString('pt-BR')+'</b></div><div>Válida até<b>'+val.toLocaleDateString('pt-BR')+'</b></div><div>Plano<b>'+plano+' meses</b></div><div>Pontos<b>'+c.its.length+'</b></div><div>Alcance<b>'+k(c.fluxo)+' pessoas/mês</b></div></div>'
     +'<table><thead><tr><th>#</th><th></th><th>Ponto</th><th class="r">Fluxo/mês</th><th class="r">Tabela</th><th class="r">Seu valor/mês</th></tr></thead><tbody>'+rows+'</tbody></table>'
     +'<div class="tot"><div><span>Subtotal</span><span>'+brl(c.bruto)+'</span></div>'+(c.pQtd?'<div class="d"><span>Desconto '+c.pQtd+'% ('+c.eleg.length+' pontos)</span><span>− '+brl(c.dQtd)+'</span></div>':'')+(c.p12?'<div class="d"><span>Plano 12 meses +'+c.p12+'%</span><span>− '+brl(c.d12)+'</span></div>':'')+'<div class="t"><span>Total mensal</span><span>'+brl(c.mensal)+'</span></div><div><span>Total do contrato ('+plano+' meses)</span><span>'+brl(c.contrato)+'</span></div></div>'
