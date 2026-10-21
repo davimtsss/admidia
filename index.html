@@ -73,6 +73,13 @@ h2{font-size:clamp(28px,4vw,46px);line-height:1;letter-spacing:-.02em;margin:0 0
 .mi img,.mi video{width:100%;height:100%;object-fit:cover;display:block}
 @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.mtrack{animation:none}}
+.marcas .wrap{max-width:1240px;margin:0 auto;padding:50px 20px 8px}.marcas h2{margin-bottom:18px}
+.lmarq{overflow:hidden;padding:6px 0 10px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ltrack{display:flex;gap:14px;width:max-content;animation:marq 45s linear infinite}.lmarq:hover .ltrack{animation-play-state:paused}
+.lg{flex:0 0 auto;width:170px;height:96px;background:#fff;border:1px solid var(--line);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:14px 18px;box-shadow:0 2px 10px #000e290a}
+.lg img{max-width:100%;max-height:100%;object-fit:contain;opacity:.9;transition:opacity .2s,transform .2s}.lg:hover img{opacity:1;transform:scale(1.05)}
+@media(max-width:600px){.lg{width:132px;height:78px;padding:10px 12px}}
+@media(prefers-reduced-motion:reduce){.ltrack{animation:none}}
 .contato{background:#000E29;color:#fff;margin-top:40px;position:relative;overflow:hidden}
 .contato::before{content:'';position:absolute;inset:0;background:radial-gradient(800px 400px at 90% 10%,#0092ff66,transparent 60%)}
 .contato .wrap{max-width:1240px;margin:0 auto;padding:64px 20px;position:relative;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
@@ -195,6 +202,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
     <div class="s3"><i>3</i><b>Receba a proposta</b><p>Pelo WhatsApp ou em PDF, pronta pra aprovar. A gente cuida da arte e da veiculação.</p></div>
   </div>
 </div></section>
+<section class="marcas"><div class="wrap"><div class="sec-k">Quem já anuncia com a gente</div><h2>Marcas que <span>confiam</span> na ADmídia.</h2></div><div class="lmarq"><div class="ltrack"><div class="lg"><img src="logos/boticario.png" alt="O Boticário"></div><div class="lg"><img src="logos/claro.svg" alt="Claro"></div><div class="lg"><img src="logos/premier.png" alt="Rede de Postos Premier"></div><div class="lg"><img src="logos/oralsin.png" alt="Oral Sin"></div><div class="lg"><img src="logos/chiquinho.png" alt="Chiquinho"></div><div class="lg"><img src="logos/rodrigues.png" alt="Construtora Rodrigues"></div><div class="lg"><img src="logos/minhaentrada.png" alt="Minha Entrada"></div><div class="lg"><img src="logos/oralunic.png" alt="Oral Unic"></div><div class="lg"><img src="logos/thebest.png" alt="The Best Açaí"></div><div class="lg"><img src="logos/magnifico.png" alt="Magnífico"></div><div class="lg"><img src="logos/valube.png" alt="Valube"></div><div class="lg"><img src="logos/boticario.png" alt="O Boticário"></div><div class="lg"><img src="logos/claro.svg" alt="Claro"></div><div class="lg"><img src="logos/premier.png" alt="Rede de Postos Premier"></div><div class="lg"><img src="logos/oralsin.png" alt="Oral Sin"></div><div class="lg"><img src="logos/chiquinho.png" alt="Chiquinho"></div><div class="lg"><img src="logos/rodrigues.png" alt="Construtora Rodrigues"></div><div class="lg"><img src="logos/minhaentrada.png" alt="Minha Entrada"></div><div class="lg"><img src="logos/oralunic.png" alt="Oral Unic"></div><div class="lg"><img src="logos/thebest.png" alt="The Best Açaí"></div><div class="lg"><img src="logos/magnifico.png" alt="Magnífico"></div><div class="lg"><img src="logos/valube.png" alt="Valube"></div></div></div></section>
 <div class="onde-h" id="onde"><div class="wrap"><div class="sec-k">Onde estamos</div><h2>Escolha <span>seus pontos</span></h2><p class="sub">Toque no mapa ou nos cards, adicione ao pacote e veja o total na hora.</p></div></div>
 
 <div class="ctrl"><div class="wrap">
