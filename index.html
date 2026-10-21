@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ADmídia · Monte sua campanha</title>
+<meta name="description" content="Escolha os pontos da maior rede de telas de Tubarão e região, monte seu pacote e receba a proposta na hora.">
+<meta name="theme-color" content="#071a3d">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071a3d'/%3E%3Ctext x='32' y='42' font-family='Montserrat,Arial' font-weight='900' font-size='28' fill='%23fff' text-anchor='middle'%3EAD%3C/text%3E%3C/svg%3E">
+<style>
+:root{--navy:#071a3d;--navy2:#0d2a5e;--blue:#1569e0;--blue2:#2f8bff;--ink:#101828;--muted:#5b6b84;--faint:#8a97ad;--line:#e4e9f1;--bg:#f4f6fa;--card:#fff;--green:#1a9e5c;--red:#d03b3b;--f:'Montserrat',-apple-system,Segoe UI,Roboto,sans-serif;--r:16px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--f);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+button{font-family:var(--f)}
+a{color:inherit}
+/* header */
+.hero{background:radial-gradient(1200px 500px at 15% -10%,#2f8bff55,transparent 60%),linear-gradient(135deg,#061634 0%,#0c2b64 55%,#1358c4 100%);color:#fff;padding:22px 20px 26px;position:relative;overflow:hidden}
+.hero .wrap{max-width:1240px;margin:0 auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid #fff;border-radius:7px;padding:3px 7px;line-height:1;text-decoration:none}
+.logo b{font-size:18px;font-weight:900;letter-spacing:.02em}.logo small{font-size:7.5px;font-weight:700;letter-spacing:.18em;margin-top:2px}
+.cartbtn{display:flex;align-items:center;gap:10px;background:#fff;color:var(--navy);border:0;border-radius:999px;padding:10px 16px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 8px 24px #0004;white-space:nowrap}
+.cartbtn .n{background:var(--blue);color:#fff;border-radius:999px;min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;padding:0 7px}
+.cartbtn.pulse{animation:pulse .35s ease}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.07)}100%{transform:scale(1)}}
+h1{font-size:clamp(28px,4.6vw,54px);line-height:1;letter-spacing:-.02em;margin:26px 0 10px;font-weight:900;text-transform:uppercase}
+.lead{font-size:clamp(14px,1.6vw,17px);max-width:720px;color:#dbe6ff;margin:0 0 18px;font-weight:500}
+.stats{display:flex;gap:10px;flex-wrap:wrap}
+.stat{background:#ffffff14;border:1px solid #ffffff2a;border-radius:12px;padding:10px 14px;backdrop-filter:blur(6px)}
+.stat b{display:block;font-size:20px;font-weight:900}.stat span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#cfe0ff;font-weight:700}
+.steps{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#e8f0ff}.step i{font-style:normal;width:24px;height:24px;border-radius:50%;background:#fff;color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:12px}
+/* controls */
+.ctrl{position:sticky;top:0;z-index:50;background:#ffffffee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.ctrl .wrap{max-width:1240px;margin:0 auto;padding:10px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.chip .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.search{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-family:var(--f);font-size:14px;min-width:180px;background:#fff}
+.sel{border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-family:var(--f);font-size:13px;font-weight:600;background:#fff;color:var(--muted)}
+/* layout */
+.main{max-width:1240px;margin:0 auto;padding:18px 20px 120px}
+#map{height:420px;border-radius:var(--r);box-shadow:0 10px 30px #0b1f4a14;margin-bottom:18px;z-index:1}
+.leaflet-popup-content-wrapper{border-radius:14px;font-family:var(--f)}.leaflet-popup-content{margin:12px 14px;font-size:13px}
+.pp b{font-size:14px;display:block;margin-bottom:2px}.pp .m{color:var(--muted);font-size:12px}.pp .pr{font-weight:800;margin-top:6px;font-size:14px}
+.pp button{margin-top:8px;width:100%;border:0;background:var(--blue);color:#fff;border-radius:10px;padding:9px;font-weight:800;cursor:pointer}
+.pp button.rm{background:#eef2f8;color:var(--ink)}
+.count{font-size:13px;color:var(--muted);margin:0 0 12px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 10px #0b1f4a0d;border:2px solid transparent;transition:transform .15s,box-shadow .15s,border-color .15s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 30px #0b1f4a1a}
+.card.sel{border-color:var(--blue)}
+.ph{position:relative;aspect-ratio:4/3;background:#dfe6f0;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph .cat{position:absolute;left:10px;top:10px;background:#ffffffee;color:var(--navy);font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+.ph .fl{position:absolute;right:10px;bottom:10px;background:#071a3dd9;color:#fff;font-size:11.5px;font-weight:700;padding:5px 9px;border-radius:999px}
+.ph .chk{position:absolute;right:10px;top:10px;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;display:none;align-items:center;justify-content:center;font-weight:900}
+.card.sel .ph .chk{display:inline-flex}
+.bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.nm{font-weight:800;font-size:15px;line-height:1.2}
+.ad{font-size:12px;color:var(--muted);line-height:1.35}
+.row{display:flex;align-items:flex-end;justify-content:space-between;margin-top:auto;padding-top:8px;gap:10px}
+.pr{font-weight:900;font-size:19px;letter-spacing:-.01em}.pr small{font-size:11px;color:var(--faint);font-weight:700;margin-left:2px}
+.pr.sc{font-size:13px;color:var(--muted)}
+.add{border:0;background:var(--navy);color:#fff;border-radius:11px;padding:10px 14px;font-weight:800;font-size:13px;cursor:pointer;white-space:nowrap}
+.add.on{background:#eaf1ff;color:var(--blue)}
+.tag{font-size:10.5px;font-weight:800;color:var(--red);letter-spacing:.04em;text-transform:uppercase}
+/* cart */
+.ov{position:fixed;inset:0;background:#07122a66;z-index:90;display:none}.ov.open{display:block}
+.cart{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:#fff;z-index:100;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-20px 0 60px #0b1f4a33}
+.cart.open{transform:none}
+.ch{padding:18px 20px 12px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.ch h2{margin:0;font-size:18px;font-weight:900}.x{border:0;background:var(--bg);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
+.cb{flex:1;overflow:auto;padding:14px 20px}
+.it{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.it img{width:52px;height:40px;object-fit:cover;border-radius:8px}
+.it .n{flex:1;min-width:0;font-size:13px;font-weight:700;line-height:1.25}.it .n small{display:block;color:var(--faint);font-weight:600;font-size:11px}
+.it .v{font-weight:800;font-size:13px;white-space:nowrap}.it .v s{color:var(--faint);font-weight:600;font-size:11px;margin-right:4px}
+.it .rm{border:0;background:transparent;color:var(--faint);cursor:pointer;font-size:16px}
+.plan{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 6px}
+.plan button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px;font-weight:800;cursor:pointer;font-size:13px;color:var(--muted)}
+.plan button.on{border-color:var(--blue);color:var(--blue);background:#eaf1ff}
+.plan button small{display:block;font-size:11px;font-weight:700;color:var(--green);margin-top:2px}
+.cli{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-family:var(--f);font-size:14px;margin-top:8px}
+.tot{padding:12px 20px;border-top:1px solid var(--line);background:#fbfcfe}
+.ln{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;color:var(--muted);font-weight:600}
+.ln.d{color:var(--green)}.ln.t{font-size:17px;color:var(--ink);font-weight:900;padding-top:8px;margin-top:4px;border-top:1px dashed var(--line)}
+.ln.c{font-size:12px;color:var(--faint)}
+.acts{padding:12px 20px 18px;display:grid;gap:8px;grid-template-columns:1fr 1fr}
+.zb{border:0;border-radius:12px;padding:12px;font-weight:800;font-size:13px;cursor:pointer;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;gap:6px}
+.pb{grid-column:1/3;border:2px solid var(--navy);background:#fff;color:var(--navy);border-radius:12px;padding:11px;font-weight:800;font-size:13px;cursor:pointer}
+.hint{font-size:11.5px;color:var(--faint);text-align:center;padding:0 20px 14px}
+.empty{color:var(--faint);text-align:center;padding:40px 10px;font-weight:600}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;font-size:13px;opacity:0;transition:.2s;z-index:200;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.foot{text-align:center;color:var(--faint);font-size:12px;padding:30px 20px;font-weight:600}
+@media(max-width:700px){.hero{padding:16px 16px 20px}.ctrl .wrap{padding:8px 12px}.main{padding:14px 12px 140px}#map{height:300px}.grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}.bd{padding:10px}.pr{font-size:16px}.add{padding:8px 10px;font-size:12px}.cartbtn{padding:9px 12px}.cartbtn .t{display:none}.search{min-width:0;flex:1}}
+@media print{.hero,.ctrl,#map,.cart,.ov,.toast,.cartbtn{display:none!important}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <div class="top">
+    <a class="logo" href="#"><b>AD</b><small>MÍDIA</small></a>
+    <button class="cartbtn" id="cartbtn" onclick="openCart()"><span class="n" id="cn">0</span><span class="t">Meu pacote</span><span id="ct">R$ 0,00</span></button>
+  </div>
+  <h1>Monte sua campanha<br>na maior rede de telas da região</h1>
+  <p class="lead">Escolha os pontos onde a sua marca vai aparecer em Tubarão e Capivari de Baixo, veja o total na hora e receba a proposta no WhatsApp ou em PDF.</p>
+  <div class="stats" id="stats"></div>
+  <div class="steps"><span class="step"><i>1</i> Escolha os pontos</span><span class="step"><i>2</i> Defina o plano (6 ou 12 meses)</span><span class="step"><i>3</i> Receba a proposta</span></div>
+</div></header>
+
+<div class="ctrl"><div class="wrap">
+  <div class="chips" id="chips"></div>
+  <input class="search" id="q" placeholder="Buscar ponto ou bairro…" oninput="render()">
+  <select class="sel" id="ord" onchange="render()"><option value="fluxo">Maior fluxo</option><option value="preco">Menor preço</option><option value="nome">A–Z</option></select>
+</div></div>
+
+<main class="main">
+  <div id="map"></div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid"></div>
+  <div class="foot">ADmídia · Tubarão/SC · Valores mensais. Proposta sujeita a disponibilidade do ponto.</div>
+</main>
+
+<div class="ov" id="ov" onclick="closeCart()"></div>
+<aside class="cart" id="cart" aria-label="Meu pacote">
+  <div class="ch"><h2>Meu pacote</h2><button class="x" onclick="closeCart()">✕</button></div>
+  <div class="cb" id="cb"></div>
+  <div class="tot" id="tot"></div>
+  <div class="acts" id="acts"></div>
+  <div class="hint">Sem compromisso. A proposta vai pronta pra você só confirmar.</div>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+// ===== CONFIG (edite aqui) =====
+const ZAP={ 'Davi':'', 'Matheus':'' };            // números com DDD, só dígitos. Ex: '48999998888'
+const DESC_QTD={min:4,pct:20};                    // 4 ou mais pontos elegíveis → 20%
+const DESC_12M=7;                                 // plano 12 meses → +7%
+const PLANOS=[6,12];
+const CATCOL={'Academias':'#e8922e','Padarias & cafés':'#c94f7c','Postos':'#1a9e5c','Edifícios comerciais':'#5b6b84','Diversos':'#8a6bb5','Salões & barbearias':'#d03b3b','Painéis de LED':'#1569e0'};
+// =================================
+let PONTOS=[],cat='Todos',SEL=new Set(),plano=6,cliente='',map,markers={};
+const brl=n=>'R$ '+(Number(n)||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const k=n=>n>=1000?(Math.round(n/1000)+' mil'):String(n);
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),1800);}
+function load(){try{const s=JSON.parse(localStorage.getItem('admidia_pacote')||'{}');(s.ids||[]).forEach(i=>SEL.add(i));plano=PLANOS.includes(s.plano)?s.plano:6;cliente=s.cliente||'';}catch(_){}
+  const h=new URLSearchParams(location.hash.slice(1));if(h.get('p')){SEL=new Set(h.get('p').split(',').map(Number).filter(Boolean));if(PLANOS.includes(+h.get('m')))plano=+h.get('m');}}
+function save(){try{localStorage.setItem('admidia_pacote',JSON.stringify({ids:[...SEL],plano,cliente}));}catch(_){}
+  const p=[...SEL].join(',');history.replaceState(null,'',p?('#p='+p+'&m='+plano):location.pathname);}
+fetch('pontos.json').then(r=>r.json()).then(d=>{PONTOS=d;load();initMap();renderChips();render();renderCart();stats();});
+function stats(){const fl=PONTOS.reduce((a,p)=>a+(p.fluxo||0),0);const cats=new Set(PONTOS.map(p=>p.cat)).size;
+  document.getElementById('stats').innerHTML='<div class="stat"><b>'+PONTOS.length+'</b><span>pontos</span></div><div class="stat"><b>'+(fl/1e6).toFixed(1).replace('.',',')+' mi</b><span>pessoas / mês</span></div><div class="stat"><b>'+cats+'</b><span>categorias</span></div><div class="stat"><b>2</b><span>cidades</span></div>';}
+function renderChips(){const cats=['Todos',...new Set(PONTOS.map(p=>p.cat))];document.getElementById('chips').innerHTML=cats.map(c=>'<button class="chip '+(cat===c?'on':'')+'" onclick="setCat(\''+c.replace(/'/g,"\\'")+'\')">'+(c!=='Todos'?'<span class="dot" style="background:'+(CATCOL[c]||'#999')+'"></span>':'')+esc(c)+'</button>').join('');}
+function setCat(c){cat=c;renderChips();render();}
+function lista(){const q=(document.getElementById('q').value||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');const ord=document.getElementById('ord').value;
+  let l=PONTOS.filter(p=>cat==='Todos'||p.cat===cat).filter(p=>!q||(p.nome+' '+p.end+' '+p.cat).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes(q));
+  if(ord==='fluxo')l.sort((a,b)=>(b.fluxo||0)-(a.fluxo||0));else if(ord==='preco')l.sort((a,b)=>(a.valor||1e9)-(b.valor||1e9));else l.sort((a,b)=>a.nome.localeCompare(b.nome,'pt'));return l;}
+function card(p){const on=SEL.has(p.id);
+  return '<div class="card '+(on?'sel':'')+'" id="c'+p.id+'"><div class="ph" onclick="focusP('+p.id+')"><img loading="lazy" src="'+p.foto+'" alt=""><span class="cat"><span class="dot" style="width:8px;height:8px;border-radius:50%;display:inline-block;background:'+(CATCOL[p.cat]||'#999')+'"></span>'+esc(p.cat)+'</span>'+(p.fluxo?'<span class="fl">👥 '+k(p.fluxo)+' / mês</span>':'')+'<span class="chk">✓</span></div><div class="bd"><div class="nm">'+esc(p.nome)+'</div><div class="ad">'+esc(p.end)+'</div>'+(p.nd?'<div class="tag">Valor fixo · sem desconto</div>':'')+'<div class="row">'+(p.valor?'<div class="pr">'+brl(p.valor)+'<small>/mês</small></div>':'<div class="pr sc">Sob consulta</div>')+'<button class="add '+(on?'on':'')+'" onclick="toggle('+p.id+')">'+(on?'✓ No pacote':'+ Adicionar')+'</button></div></div></div>';}
+function render(){const l=lista();document.getElementById('grid').innerHTML=l.map(card).join('')||'<div class="empty">Nenhum ponto nesse filtro.</div>';document.getElementById('count').textContent=l.length+' ponto'+(l.length!==1?'s':'')+(cat!=='Todos'?' · '+cat:'');updateMarkers(l);}
+function toggle(id){const p=PONTOS.find(x=>x.id===id);if(!p)return;if(SEL.has(id)){SEL.delete(id);toast('Removido');}else{SEL.add(id);toast(p.nome+' adicionado ✓');const b=document.getElementById('cartbtn');b.classList.remove('pulse');void b.offsetWidth;b.classList.add('pulse');}
+  save();render();renderCart();if(markers[id])markers[id].setIcon(icon(p));if(map&&map._popup)map.closePopup();}
+/* ---- mapa ---- */
+function icon(p){const on=SEL.has(p.id);const col=CATCOL[p.cat]||'#999';
+  return L.divIcon({className:'',iconSize:[on?34:26,on?34:26],iconAnchor:[on?17:13,on?17:13],html:'<div style="width:100%;height:100%;border-radius:50%;background:'+(on?'#1569e0':col)+';border:3px solid #fff;box-shadow:0 3px 10px #0005;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:'+(on?16:12)+'px;font-family:Montserrat,sans-serif">'+(on?'✓':(p.led?'▣':''))+'</div>'});}
+function initMap(){map=L.map('map',{scrollWheelZoom:false}).setView([-28.47,-49.01],13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+  PONTOS.forEach(p=>{const m=L.marker([p.lat,p.lng],{icon:icon(p)}).addTo(map);m.on('click',()=>{m.bindPopup(popup(p)).openPopup();});markers[p.id]=m;});
+  const g=L.featureGroup(Object.values(markers));map.fitBounds(g.getBounds().pad(0.08));}
+function popup(p){const on=SEL.has(p.id);return '<div class="pp"><b>'+esc(p.nome)+'</b><div class="m">'+esc(p.cat)+(p.fluxo?' · 👥 '+k(p.fluxo)+'/mês':'')+'</div><div class="m">'+esc(p.end)+'</div><div class="pr">'+(p.valor?brl(p.valor)+'/mês':'Sob consulta')+'</div><button class="'+(on?'rm':'')+'" onclick="toggle('+p.id+')">'+(on?'Remover do pacote':'+ Adicionar ao pacote')+'</button></div>';}
+function updateMarkers(l){const ids=new Set(l.map(p=>p.id));PONTOS.forEach(p=>{const m=markers[p.id];if(!m)return;const show=ids.has(p.id)||SEL.has(p.id);if(show&&!map.hasLayer(m))m.addTo(map);if(!show&&map.hasLayer(m))map.removeLayer(m);m.setIcon(icon(p));});}
+function focusP(id){const p=PONTOS.find(x=>x.id===id);if(!p||!map)return;map.setView([p.lat,p.lng],16,{animate:true});markers[id].bindPopup(popup(p)).openPopup();document.getElementById('map').scrollIntoView({behavior:'smooth',block:'start'});}
+/* ---- carrinho / cálculo ---- */
+function calc(){const its=[...SEL].map(id=>PONTOS.find(p=>p.id===id)).filter(Boolean);
+  const eleg=its.filter(p=>!p.nd&&p.valor);const fixos=its.filter(p=>p.nd&&p.valor);const sc=its.filter(p=>!p.valor);
+  const subEleg=eleg.reduce((a,p)=>a+p.valor,0),subFix=fixos.reduce((a,p)=>a+p.valor,0);
+  const pQtd=eleg.length>=DESC_QTD.min?DESC_QTD.pct:0;const p12=plano===12?DESC_12M:0;
+  const dQtd=subEleg*pQtd/100;const d12=(subEleg-dQtd)*p12/100;
+  const mensal=subEleg-dQtd-d12+subFix;const bruto=subEleg+subFix;
+  return {its,eleg,fixos,sc,subEleg,subFix,bruto,pQtd,p12,dQtd,d12,mensal,contrato:mensal*plano,fluxo:its.reduce((a,p)=>a+(p.fluxo||0),0)};}
+function precoItem(p,c){if(!p.valor||p.nd)return p.valor;let v=p.valor*(1-c.pQtd/100);v=v*(1-c.p12/100);return v;}
+function renderCart(){const c=calc();document.getElementById('cn').textContent=c.its.length;document.getElementById('ct').textContent=brl(c.mensal)+'/mês';
+  document.getElementById('cb').innerHTML=c.its.length?c.its.map(p=>'<div class="it"><img src="'+p.foto+'" alt=""><div class="n">'+esc(p.nome)+'<small>'+esc(p.cat)+(p.fluxo?' · '+k(p.fluxo)+'/mês':'')+'</small></div><div class="v">'+(p.valor?((precoItem(p,c)<p.valor?'<s>'+brl(p.valor)+'</s>':'')+brl(precoItem(p,c))):'consulta')+'</div><button class="rm" onclick="toggle('+p.id+')" title="Remover">✕</button></div>').join('')
+    +'<div class="plan">'+PLANOS.map(m=>'<button class="'+(plano===m?'on':'')+'" onclick="setPlano('+m+')">'+m+' meses'+(m===12?'<small>+'+DESC_12M+'% de desconto</small>':'<small>&nbsp;</small>')+'</button>').join('')+'</div>'
+    +'<input class="cli" id="cli" placeholder="Nome da sua empresa (opcional)" value="'+esc(cliente)+'" oninput="cliente=this.value;save()">'
+    +(c.eleg.length&&c.eleg.length<DESC_QTD.min?'<div class="hint" style="padding:10px 0 0">Faltam <b>'+(DESC_QTD.min-c.eleg.length)+'</b> ponto'+(DESC_QTD.min-c.eleg.length>1?'s':'')+' pra ganhar <b>'+DESC_QTD.pct+'% de desconto</b> 🎯</div>':'')
+    :'<div class="empty">Seu pacote está vazio.<br>Toque em <b>+ Adicionar</b> nos pontos.</div>';
+  document.getElementById('tot').innerHTML=c.its.length?'<div class="ln"><span>'+c.its.length+' ponto'+(c.its.length>1?'s':'')+' · '+k(c.fluxo)+' pessoas/mês</span><span>'+brl(c.bruto)+'</span></div>'
+    +(c.pQtd?'<div class="ln d"><span>Desconto '+c.pQtd+'% ('+c.eleg.length+' pontos)</span><span>− '+brl(c.dQtd)+'</span></div>':'')
+    +(c.p12?'<div class="ln d"><span>Plano 12 meses +'+c.p12+'%</span><span>− '+brl(c.d12)+'</span></div>':'')
+    +(c.fixos.length?'<div class="ln c"><span>'+c.fixos.length+' ponto'+(c.fixos.length>1?'s':'')+' com valor fixo (sem desconto)</span><span></span></div>':'')
+    +(c.sc.length?'<div class="ln c"><span>'+c.sc.length+' sob consulta (não somado)</span><span></span></div>':'')
+    +'<div class="ln t"><span>Total mensal</span><span>'+brl(c.mensal)+'</span></div><div class="ln c"><span>Contrato de '+plano+' meses</span><span>'+brl(c.contrato)+'</span></div>':'';
+  document.getElementById('acts').innerHTML=c.its.length?Object.keys(ZAP).map(n=>'<button class="zb" onclick="zap(\''+n+'\')">💬 Enviar pro '+n+'</button>').join('')+'<button class="pb" onclick="proposta()">📄 Gerar proposta em PDF</button>':'';}
+function setPlano(m){plano=m;save();renderCart();}
+function openCart(){document.getElementById('cart').classList.add('open');document.getElementById('ov').classList.add('open');}
+function closeCart(){document.getElementById('cart').classList.remove('open');document.getElementById('ov').classList.remove('open');}
+function texto(){const c=calc();const d=new Date().toLocaleDateString('pt-BR');
+  return 'Olá! Montei uma campanha na ADmídia'+(cliente?' pra '+cliente:'')+' ('+d+'):\n\n'+c.its.map(p=>'• '+p.nome+' — '+(p.valor?brl(p.valor)+'/mês':'sob consulta')).join('\n')
+    +'\n\nPlano: '+plano+' meses'+(c.pQtd?'\nDesconto: '+c.pQtd+'%'+(c.p12?' + '+c.p12+'% (12 meses)':''):(c.p12?'\nDesconto: '+c.p12+'% (12 meses)':''))
+    +'\nTotal mensal: '+brl(c.mensal)+'\nTotal do contrato: '+brl(c.contrato)+'\n\nLink do pacote: '+location.href;}
+function zap(n){const num=ZAP[n];const t=encodeURIComponent(texto());if(!num){toast('Número do '+n+' ainda não configurado');window.open('https://wa.me/?text='+t,'_blank');return;}window.open('https://wa.me/55'+num+'?text='+t,'_blank');}
+function proposta(){const c=calc();const w=window.open('','_blank');if(!w){toast('Libera o pop-up pra gerar o PDF');return;}const d=new Date();const val=new Date(d.getTime()+7*86400000);
+  const rows=c.its.map((p,i)=>'<tr><td>'+(i+1)+'</td><td><img src="'+new URL(p.foto,location.href).href+'"></td><td><b>'+esc(p.nome)+'</b><br><small>'+esc(p.cat)+' · '+esc(p.end)+'</small></td><td class="r">'+(p.fluxo?k(p.fluxo):'—')+'</td><td class="r">'+(p.valor?brl(p.valor):'sob consulta')+'</td><td class="r"><b>'+(p.valor?brl(precoItem(p,c)):'—')+'</b></td></tr>').join('');
+  w.document.write('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Proposta ADmídia'+(cliente?' · '+esc(cliente):'')+'</title><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet"><style>@page{size:A4;margin:14mm}body{font-family:Montserrat,Arial,sans-serif;color:#101828;margin:0;padding:0}.hd{background:linear-gradient(135deg,#061634,#1358c4);color:#fff;padding:26px 28px;border-radius:14px;display:flex;justify-content:space-between;align-items:flex-end}.hd h1{margin:0;font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em}.hd .s{font-size:12px;color:#cfe0ff;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.lg{border:2px solid #fff;border-radius:7px;padding:4px 8px;display:inline-flex;flex-direction:column;align-items:center;line-height:1}.lg b{font-size:18px;font-weight:900}.lg small{font-size:7.5px;letter-spacing:.18em;font-weight:700;margin-top:2px}.meta{display:flex;gap:28px;margin:18px 4px 10px;font-size:12.5px;color:#5b6b84;font-weight:600}.meta b{color:#101828;display:block;font-size:14px}table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}th{text-align:left;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#5b6b84;padding:8px 6px;border-bottom:2px solid #dde3ec}td{padding:8px 6px;border-bottom:1px solid #e8ecf3;vertical-align:middle}td img{width:64px;height:46px;object-fit:cover;border-radius:7px;display:block}small{color:#5b6b84;font-size:11px}.r{text-align:right;white-space:nowrap}.tot{margin-top:14px;margin-left:auto;width:320px;font-size:13px}.tot div{display:flex;justify-content:space-between;padding:4px 0;color:#5b6b84;font-weight:600}.tot .d{color:#1a9e5c}.tot .t{border-top:2px solid #101828;margin-top:6px;padding-top:8px;font-size:17px;font-weight:900;color:#101828}.ft{margin-top:26px;font-size:11.5px;color:#5b6b84;line-height:1.6}.ft b{color:#101828}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body>'
+    +'<div class="hd"><div><div class="s">Proposta comercial</div><h1>'+(cliente?esc(cliente):'Campanha ADmídia')+'</h1></div><div class="lg"><b>AD</b><small>MÍDIA</small></div></div>'
+    +'<div class="meta"><div>Data<b>'+d.toLocaleDateString('pt-BR')+'</b></div><div>Válida até<b>'+val.toLocaleDateString('pt-BR')+'</b></div><div>Plano<b>'+plano+' meses</b></div><div>Pontos<b>'+c.its.length+'</b></div><div>Alcance<b>'+k(c.fluxo)+' pessoas/mês</b></div></div>'
+    +'<table><thead><tr><th>#</th><th></th><th>Ponto</th><th class="r">Fluxo/mês</th><th class="r">Tabela</th><th class="r">Seu valor/mês</th></tr></thead><tbody>'+rows+'</tbody></table>'
+    +'<div class="tot"><div><span>Subtotal</span><span>'+brl(c.bruto)+'</span></div>'+(c.pQtd?'<div class="d"><span>Desconto '+c.pQtd+'% ('+c.eleg.length+' pontos)</span><span>− '+brl(c.dQtd)+'</span></div>':'')+(c.p12?'<div class="d"><span>Plano 12 meses +'+c.p12+'%</span><span>− '+brl(c.d12)+'</span></div>':'')+'<div class="t"><span>Total mensal</span><span>'+brl(c.mensal)+'</span></div><div><span>Total do contrato ('+plano+' meses)</span><span>'+brl(c.contrato)+'</span></div></div>'
+    +'<div class="ft"><b>Como funciona:</b> sua marca é exibida nas telas dos pontos escolhidos, todos os dias, no horário de funcionamento de cada local. Produção da arte inclusa. '+(c.sc.length?'Pontos "sob consulta" serão orçados à parte. ':'')+'Valores mensais, sujeitos a disponibilidade do ponto.<br><b>ADmídia</b> · Tubarão/SC · '+(ZAP.Davi?'WhatsApp (Davi) +55 '+ZAP.Davi+' · ':'')+(ZAP.Matheus?'WhatsApp (Matheus) +55 '+ZAP.Matheus:'')+'</div>'
+    +'<script>window.onload=()=>setTimeout(()=>window.print(),600)<\/script></body></html>');w.document.close();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart();});
+</script>
+</body>
+</html>
