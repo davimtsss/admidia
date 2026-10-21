@@ -102,6 +102,7 @@ h2{font-size:clamp(28px,4vw,46px);line-height:1;letter-spacing:-.02em;margin:0 0
 /* layout */
 .main{max-width:1240px;margin:0 auto;padding:18px 20px 120px;position:relative}
 body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(1100px 520px at -8% 28%,#0092ff2e,transparent 62%),radial-gradient(900px 380px at 108% 78%,#0092ff22,transparent 60%),#fff}
+#map .leaflet-tile-pane{filter:grayscale(1) brightness(1.04) contrast(.92)}
 #map{height:420px;border-radius:var(--r);box-shadow:0 10px 30px #0b1f4a14;margin-bottom:18px;z-index:1}
 .leaflet-popup-content-wrapper{border-radius:14px;font-family:var(--f)}.leaflet-popup-content{margin:12px 14px;font-size:13px}
 .pp b{font-size:14px;display:block;margin-bottom:2px}.pp .m{color:var(--muted);font-size:12px}.pp .pr{font-weight:800;margin-top:6px;font-size:14px}
@@ -241,7 +242,7 @@ const ZAP={ 'Davi':'48991079940', 'Matheus':'48999292439' };            // núme
 const DESC_QTD={min:4,pct:20};                    // 4 ou mais pontos elegíveis → 20%
 const DESC_12M=7;                                 // plano 12 meses → +7%
 const PLANOS=[6,12];
-const CATCOL={'Academias':'#e8922e','Padarias & cafés':'#c94f7c','Postos':'#1a9e5c','Edifícios comerciais':'#5b6b84','Diversos':'#8a6bb5','Salões & barbearias':'#d03b3b','Painéis de LED':'#1569e0'};
+const CATCOL={'Academias':'#0092FF','Padarias & cafés':'#4FB3FF','Postos':'#0066CC','Edifícios comerciais':'#7A8BA6','Diversos':'#1D3B78','Salões & barbearias':'#8FCBFF','Painéis de LED':'#000E29'};
 // =================================
 let PONTOS=[],cat='Todos',SEL=new Set(),plano=6,cliente='',map,markers={};
 const brl=n=>'R$ '+(Number(n)||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -267,7 +268,7 @@ function toggle(id){const p=PONTOS.find(x=>x.id===id);if(!p)return;if(SEL.has(id
   save();render();renderCart();if(markers[id])markers[id].setIcon(icon(p));if(map&&map._popup)map.closePopup();}
 /* ---- mapa ---- */
 function icon(p){const on=SEL.has(p.id);const col=CATCOL[p.cat]||'#999';
-  return L.divIcon({className:'',iconSize:[on?34:26,on?34:26],iconAnchor:[on?17:13,on?17:13],html:'<div style="width:100%;height:100%;border-radius:50%;background:'+(on?'#1569e0':col)+';border:3px solid #fff;box-shadow:0 3px 10px #0005;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:'+(on?16:12)+'px;font-family:Montserrat,sans-serif">'+(on?'✓':(p.led?'▣':''))+'</div>'});}
+  return L.divIcon({className:'',iconSize:[on?34:26,on?34:26],iconAnchor:[on?17:13,on?17:13],html:'<div style="width:100%;height:100%;border-radius:50%;background:'+(on?'#0092FF':col)+';border:3px solid #fff;box-shadow:'+(on?'0 0 0 4px #0092ff55,':'')+'0 3px 10px #000e2955;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:'+(on?16:12)+'px;font-family:Montserrat,sans-serif">'+(on?'✓':(p.led?'▣':''))+'</div>'});}
 function initMap(){map=L.map('map',{scrollWheelZoom:false}).setView([-28.47,-49.01],13);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
   PONTOS.forEach(p=>{const m=L.marker([p.lat,p.lng],{icon:icon(p)}).addTo(map);m.on('click',()=>{m.bindPopup(popup(p)).openPopup();});markers[p.id]=m;});
