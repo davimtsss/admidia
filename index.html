@@ -47,13 +47,19 @@ a{color:inherit}
 .lg img{max-width:100%;max-height:100%;object-fit:contain;opacity:.9;transition:opacity .2s,transform .2s}.lg:hover img{opacity:1;transform:scale(1.05)}
 @media(max-width:600px){.lg{width:118px;height:64px}.ltrack{gap:28px}}
 @media(prefers-reduced-motion:reduce){.ltrack{animation:none}}
-.contato{background:#000E29;color:#fff;margin-top:40px;position:relative;overflow:hidden}
-.contato::before{content:'';position:absolute;inset:0;background:radial-gradient(800px 400px at 90% 10%,#0092ff66,transparent 60%)}
-.contato .wrap{max-width:1240px;margin:0 auto;padding:64px 20px;position:relative;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
-.contato h2{color:#fff;font-size:clamp(40px,7vw,96px);line-height:.9;margin:0 0 14px}.contato h2 span{color:var(--blue)}
-.contato p{color:#dbe9ff;font-size:16px;max-width:520px;line-height:1.5;margin:0 0 22px}
-.cbox{background:#ffffff10;border:1px solid #ffffff22;border-radius:var(--r);padding:22px;backdrop-filter:blur(8px)}
-.cbox .zb{width:100%;margin-bottom:8px;font-size:14px;padding:14px}
+.contato{padding:40px 20px 30px}
+.cwrap{position:relative;max-width:1180px;margin:0 auto;border-radius:32px;overflow:hidden;background:linear-gradient(135deg,#0092FF 0%,#0070e0 55%,#0052b8 100%);box-shadow:0 30px 70px #0092ff40}
+.cbg{position:absolute;inset:0;background:radial-gradient(45% 80% at 100% 0%,#ffffff40,transparent 60%),radial-gradient(40% 70% at 0% 100%,#00b4ff55,transparent 65%)}
+.cin{position:relative;text-align:center;padding:clamp(48px,7vw,80px) 24px;color:#fff}
+.ck{display:inline-block;background:#ffffff22;border:1px solid #ffffff40;font-size:12.5px;font-weight:500;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+.contato h2{color:#fff;font-size:clamp(30px,4.4vw,52px);line-height:1.06;letter-spacing:-.04em;margin:0 0 14px;font-weight:700}
+.contato p{color:#e6f3ff;font-size:17px;max-width:560px;margin:0 auto 28px;line-height:1.55}
+.cbox{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.cb1,.cb2{border-radius:999px;padding:13px 22px;font-family:var(--f);font-weight:600;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:transform .15s}
+.cb1{background:#fff;color:#0b1730;border:1px solid #fff}.cb1 .ic{color:#25d366}
+.cb2{background:transparent;color:#fff;border:1px solid #ffffff80}
+.cb1:hover,.cb2:hover{transform:translateY(-1px)}
+.ic{width:18px;height:18px;flex:0 0 auto}
 .quote{text-align:center;padding:44px 20px 10px;font-size:clamp(20px,3vw,32px);font-weight:700;color:var(--navy);letter-spacing:-.02em;line-height:1.15}.quote span{color:var(--blue)}
 @media(max-width:900px){.strip .wrap{grid-template-columns:repeat(3,1fr)}.si:nth-child(3){border-right:0}.steps3{grid-template-columns:1fr}.contato .wrap{grid-template-columns:1fr}.nav{display:none}}
 @media(max-width:600px){.strip .wrap{grid-template-columns:repeat(2,1fr)}.si{border-right:0}.hero{min-height:0;padding-bottom:44px}}
@@ -116,8 +122,8 @@ a{color:inherit}
 .ln.d{color:var(--green)}.ln.t{font-size:17px;color:var(--ink);font-weight:700;padding-top:8px;margin-top:4px;border-top:1px dashed var(--line)}
 .ln.c{font-size:12px;color:var(--faint)}
 .acts{padding:12px 20px 18px;display:grid;gap:8px;grid-template-columns:1fr 1fr}
-.zb{border:0;border-radius:12px;padding:12px;font-weight:600;font-size:13px;cursor:pointer;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;gap:6px}
-.pb{grid-column:1/3;border:2px solid var(--navy);background:#fff;color:var(--navy);border-radius:12px;padding:11px;font-weight:600;font-size:13px;cursor:pointer}
+.zb{border:0;border-radius:999px;padding:12px;font-family:var(--f);font-weight:600;font-size:13.5px;cursor:pointer;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;gap:7px}.zb:hover{background:#1fbd5a}
+.pb{grid-column:1/3;border:1px solid #d6dfeb;background:#fff;color:#0b1730;border-radius:999px;padding:12px;font-family:var(--f);font-weight:600;font-size:13.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px}.pb:hover{border-color:#0b1730}
 .hint{font-size:11.5px;color:var(--faint);text-align:center;padding:0 20px 14px}
 .empty{color:var(--faint);text-align:center;padding:40px 10px;font-weight:600}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;font-size:13px;opacity:0;transition:.2s;z-index:200;pointer-events:none}
@@ -214,9 +220,14 @@ h2{font-size:clamp(28px,3.6vw,44px);line-height:1.08;letter-spacing:-.035em;marg
   <div class="grid" id="grid"></div>
 </main>
 <div class="quote">Grandes marcas não são descobertas.<br><span>São lembradas.</span></div>
-<section class="contato" id="contato"><div class="wrap">
-  <div><div class="sec-k" style="color:#9fd3ff">Vamos conversar</div><h2>Fale<br><span>conosco</span></h2><p>Monte seu pacote aqui mesmo ou chama a gente no WhatsApp — a proposta sai no mesmo dia, com arte inclusa.</p></div>
-  <div class="cbox" id="cbox"></div>
+<section class="contato" id="contato"><div class="cwrap">
+  <div class="cbg"></div>
+  <div class="cin">
+    <div class="ck">Vamos conversar</div>
+    <h2>Pronto pra sua marca ser vista?</h2>
+    <p>Monte seu pacote aqui ou fale direto com a gente. A proposta sai no mesmo dia, com a arte inclusa.</p>
+    <div class="cbox" id="cbox"></div>
+  </div>
 </div></section>
 <div class="foot">ADmídia · Tubarão/SC · Valores mensais. Proposta sujeita a disponibilidade do ponto.</div>
 
@@ -238,6 +249,8 @@ const ZAP={ 'Davi':'48991079940', 'Matheus':'48999292439' };            // núme
 const DESC_QTD={min:4,pct:20};                    // 4 ou mais pontos elegíveis → 20%
 const DESC_12M=7;                                 // plano 12 meses → +7%
 const PLANOS=[6,12];
+const IC_WA='<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 5.83 2.42 8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.02 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z"/></svg>';
+const IC_DOC='<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>';
 const CATCOL={'Academias':'#0092FF','Padarias & cafés':'#4FB3FF','Postos':'#0066CC','Edifícios comerciais':'#7A8BA6','Diversos':'#1D3B78','Salões & barbearias':'#8FCBFF','Painéis de LED':'#000E29'};
 // =================================
 let PONTOS=[],cat='Todos',SEL=new Set(),plano=6,cliente='',map,markers={};
@@ -249,7 +262,7 @@ function load(){try{const s=JSON.parse(localStorage.getItem('admidia_pacote')||'
   const h=new URLSearchParams(location.hash.slice(1));if(h.get('p')){SEL=new Set(h.get('p').split(',').map(Number).filter(Boolean));if(PLANOS.includes(+h.get('m')))plano=+h.get('m');}}
 function save(){try{localStorage.setItem('admidia_pacote',JSON.stringify({ids:[...SEL],plano,cliente}));}catch(_){}
   const p=[...SEL].join(',');history.replaceState(null,'',p?('#p='+p+'&m='+plano):location.pathname);}
-fetch('pontos.json').then(r=>r.json()).then(d=>{PONTOS=d;load();initMap();renderChips();render();renderCart();stats();document.getElementById('cbox').innerHTML=Object.keys(ZAP).map(n=>'<button class="zb" onclick="zap(\''+n+'\')">💬 WhatsApp · '+n+'</button>').join('')+'<button class="pb" style="width:100%;border-color:#fff;color:#fff;background:transparent" onclick="openCart()">Ver meu pacote</button>';});
+fetch('pontos.json').then(r=>r.json()).then(d=>{PONTOS=d;load();initMap();renderChips();render();renderCart();stats();document.getElementById('cbox').innerHTML=Object.keys(ZAP).map(n=>'<button class="cb1" onclick="zap(\''+n+'\')">'+IC_WA+'Falar com '+n+'</button>').join('')+'<button class="cb2" onclick="openCart()">Ver meu pacote</button>';});
 function stats(){const fl=PONTOS.reduce((a,p)=>a+(p.fluxo||0),0);document.getElementById('st-n').textContent=PONTOS.length;document.getElementById('st-f').textContent=(fl/1e6).toFixed(1).replace('.',',')+' mi';}
 function zapTopo(){const n=Object.values(ZAP).find(Boolean);const t=encodeURIComponent('Olá! Quero saber mais sobre anunciar na ADmídia.');window.open(n?('https://wa.me/55'+n+'?text='+t):('https://wa.me/?text='+t),'_blank');}
 function renderChips(){const cats=['Todos',...new Set(PONTOS.map(p=>p.cat))];document.getElementById('chips').innerHTML=cats.map(c=>'<button class="chip '+(cat===c?'on':'')+'" onclick="setCat(\''+c.replace(/'/g,"\\'")+'\')">'+(c!=='Todos'?'<span class="dot" style="background:'+(CATCOL[c]||'#999')+'"></span>':'')+esc(c)+'</button>').join('');}
@@ -269,7 +282,7 @@ function initMap(){map=L.map('map',{scrollWheelZoom:false}).setView([-28.47,-49.
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
   PONTOS.forEach(p=>{const m=L.marker([p.lat,p.lng],{icon:icon(p)}).addTo(map);m.on('click',()=>{m.bindPopup(popup(p)).openPopup();});markers[p.id]=m;});
   const g=L.featureGroup(Object.values(markers));map.fitBounds(g.getBounds().pad(0.08));}
-function popup(p){const on=SEL.has(p.id);return '<div class="pp"><b>'+esc(p.nome)+'</b><div class="m">'+esc(p.cat)+(p.fluxo?' · 👥 '+k(p.fluxo)+'/mês':'')+'</div><div class="m">'+esc(p.end)+'</div><div class="pr">'+(p.valor?brl(p.valor)+'/mês':'Sob consulta')+'</div><button class="'+(on?'rm':'')+'" onclick="toggle('+p.id+')">'+(on?'Remover do pacote':'+ Adicionar ao pacote')+'</button></div>';}
+function popup(p){const on=SEL.has(p.id);return '<div class="pp"><b>'+esc(p.nome)+'</b><div class="m">'+esc(p.cat)+(p.fluxo?' · '+k(p.fluxo)+' pessoas/mês':'')+'</div><div class="m">'+esc(p.end)+'</div><div class="pr">'+(p.valor?brl(p.valor)+'/mês':'Sob consulta')+'</div><button class="'+(on?'rm':'')+'" onclick="toggle('+p.id+')">'+(on?'Remover do pacote':'+ Adicionar ao pacote')+'</button></div>';}
 function updateMarkers(l){const ids=new Set(l.map(p=>p.id));PONTOS.forEach(p=>{const m=markers[p.id];if(!m)return;const show=ids.has(p.id)||SEL.has(p.id);if(show&&!map.hasLayer(m))m.addTo(map);if(!show&&map.hasLayer(m))map.removeLayer(m);m.setIcon(icon(p));});}
 function focusP(id){const p=PONTOS.find(x=>x.id===id);if(!p||!map)return;map.setView([p.lat,p.lng],16,{animate:true});markers[id].bindPopup(popup(p)).openPopup();document.getElementById('map').scrollIntoView({behavior:'smooth',block:'start'});}
 /* ---- carrinho / cálculo ---- */
@@ -286,7 +299,7 @@ function renderCart(){const c=calc();document.getElementById('cn').textContent=c
   document.getElementById('cb').innerHTML=c.its.length?c.its.map(p=>'<div class="it"><img src="'+p.foto+'" alt=""><div class="n">'+esc(p.nome)+'<small>'+esc(p.cat)+(p.fluxo?' · '+k(p.fluxo)+'/mês':'')+'</small></div><div class="v">'+(p.valor?((precoItem(p,c)<p.valor?'<s>'+brl(p.valor)+'</s>':'')+brl(precoItem(p,c))):'consulta')+'</div><button class="rm" onclick="toggle('+p.id+')" title="Remover">✕</button></div>').join('')
     +'<div class="plan">'+PLANOS.map(m=>'<button class="'+(plano===m?'on':'')+'" onclick="setPlano('+m+')">'+m+' meses'+(m===12?'<small>+'+DESC_12M+'% de desconto</small>':'<small>&nbsp;</small>')+'</button>').join('')+'</div>'
     +'<input class="cli" id="cli" placeholder="Nome da sua empresa (opcional)" value="'+esc(cliente)+'" oninput="cliente=this.value;save()">'
-    +(c.eleg.length&&c.eleg.length<DESC_QTD.min?'<div class="hint" style="padding:10px 0 0">Faltam <b>'+(DESC_QTD.min-c.eleg.length)+'</b> ponto'+(DESC_QTD.min-c.eleg.length>1?'s':'')+' pra ganhar <b>'+DESC_QTD.pct+'% de desconto</b> 🎯</div>':'')
+    +(c.eleg.length&&c.eleg.length<DESC_QTD.min?'<div class="hint" style="padding:10px 0 0">Faltam <b>'+(DESC_QTD.min-c.eleg.length)+'</b> ponto'+(DESC_QTD.min-c.eleg.length>1?'s':'')+' pra ganhar <b>'+DESC_QTD.pct+'% de desconto</b></div>':'')
     :'<div class="empty">Seu pacote está vazio.<br>Toque em <b>+ Adicionar</b> nos pontos.</div>';
   document.getElementById('tot').innerHTML=c.its.length?'<div class="ln"><span>'+c.its.length+' ponto'+(c.its.length>1?'s':'')+' · '+k(c.fluxo)+' pessoas/mês</span><span>'+brl(c.bruto)+'</span></div>'
     +(c.pQtd?'<div class="ln d"><span>Desconto '+c.pQtd+'% ('+c.eleg.length+' pontos)</span><span>− '+brl(c.dQtd)+'</span></div>':'')
@@ -294,7 +307,7 @@ function renderCart(){const c=calc();document.getElementById('cn').textContent=c
     +(c.fixos.length?'<div class="ln c"><span>'+c.fixos.length+' ponto'+(c.fixos.length>1?'s':'')+' com valor fixo (sem desconto)</span><span></span></div>':'')
     +(c.sc.length?'<div class="ln c"><span>'+c.sc.length+' sob consulta (não somado)</span><span></span></div>':'')
     +'<div class="ln t"><span>Total mensal</span><span>'+brl(c.mensal)+'</span></div><div class="ln c"><span>Contrato de '+plano+' meses</span><span>'+brl(c.contrato)+'</span></div>':'';
-  document.getElementById('acts').innerHTML=c.its.length?Object.keys(ZAP).map(n=>'<button class="zb" onclick="zap(\''+n+'\')">💬 Enviar pro '+n+'</button>').join('')+'<button class="pb" onclick="proposta()">📄 Gerar proposta em PDF</button>':'';}
+  document.getElementById('acts').innerHTML=c.its.length?Object.keys(ZAP).map(n=>'<button class="zb" onclick="zap(\''+n+'\')">'+IC_WA+'Enviar pro '+n+'</button>').join('')+'<button class="pb" onclick="proposta()">'+IC_DOC+'Gerar proposta em PDF</button>':'';}
 function setPlano(m){plano=m;save();renderCart();}
 function openCart(){document.getElementById('cart').classList.add('open');document.getElementById('ov').classList.add('open');}
 function closeCart(){document.getElementById('cart').classList.remove('open');document.getElementById('ov').classList.remove('open');}
