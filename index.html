@@ -245,7 +245,7 @@ h2{font-size:clamp(28px,3.6vw,44px);line-height:1.08;letter-spacing:-.035em;marg
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
 // ===== CONFIG (edite aqui) =====
-const ZAP={ 'Davi':'48991079940', 'Matheus':'48999292439' };            // números com DDD, só dígitos. Ex: '48999998888'
+const ZAP={ 'Comercial 1':'48991079940', 'Comercial 2':'48999292439' };   // Comercial 1 = Davi · Comercial 2 = Matheus            // números com DDD, só dígitos. Ex: '48999998888'
 const DESC_QTD={min:4,pct:20};                    // 4 ou mais pontos elegíveis → 20%
 const DESC_12M=7;                                 // plano 12 meses → +7%
 const PLANOS=[6,12];
@@ -262,7 +262,7 @@ function load(){try{const s=JSON.parse(localStorage.getItem('admidia_pacote')||'
   const h=new URLSearchParams(location.hash.slice(1));if(h.get('p')){SEL=new Set(h.get('p').split(',').map(Number).filter(Boolean));if(PLANOS.includes(+h.get('m')))plano=+h.get('m');}}
 function save(){try{localStorage.setItem('admidia_pacote',JSON.stringify({ids:[...SEL],plano,cliente}));}catch(_){}
   const p=[...SEL].join(',');history.replaceState(null,'',p?('#p='+p+'&m='+plano):location.pathname);}
-fetch('pontos.json').then(r=>r.json()).then(d=>{PONTOS=d;load();initMap();renderChips();render();renderCart();stats();document.getElementById('cbox').innerHTML=Object.keys(ZAP).map(n=>'<button class="cb1" onclick="zap(\''+n+'\')">'+IC_WA+'Falar com '+n+'</button>').join('')+'<button class="cb2" onclick="openCart()">Ver meu pacote</button>';});
+fetch('pontos.json').then(r=>r.json()).then(d=>{PONTOS=d;load();initMap();renderChips();render();renderCart();stats();document.getElementById('cbox').innerHTML=Object.keys(ZAP).map(n=>'<button class="cb1" onclick="zap(\''+n+'\')">'+IC_WA+n+'</button>').join('')+'<button class="cb2" onclick="openCart()">Ver meu pacote</button>';});
 function stats(){const fl=PONTOS.reduce((a,p)=>a+(p.fluxo||0),0);document.getElementById('st-n').textContent=PONTOS.length;document.getElementById('st-f').textContent=(fl/1e6).toFixed(1).replace('.',',')+' mi';}
 function zapTopo(){const n=Object.values(ZAP).find(Boolean);const t=encodeURIComponent('Olá! Quero saber mais sobre anunciar na ADmídia.');window.open(n?('https://wa.me/55'+n+'?text='+t):('https://wa.me/?text='+t),'_blank');}
 function renderChips(){const cats=['Todos',...new Set(PONTOS.map(p=>p.cat))];document.getElementById('chips').innerHTML=cats.map(c=>'<button class="chip '+(cat===c?'on':'')+'" onclick="setCat(\''+c.replace(/'/g,"\\'")+'\')">'+(c!=='Todos'?'<span class="dot" style="background:'+(CATCOL[c]||'#999')+'"></span>':'')+esc(c)+'</button>').join('');}
@@ -307,7 +307,7 @@ function renderCart(){const c=calc();document.getElementById('cn').textContent=c
     +(c.fixos.length?'<div class="ln c"><span>'+c.fixos.length+' ponto'+(c.fixos.length>1?'s':'')+' com valor fixo (sem desconto)</span><span></span></div>':'')
     +(c.sc.length?'<div class="ln c"><span>'+c.sc.length+' sob consulta (não somado)</span><span></span></div>':'')
     +'<div class="ln t"><span>Total mensal</span><span>'+brl(c.mensal)+'</span></div><div class="ln c"><span>Contrato de '+plano+' meses</span><span>'+brl(c.contrato)+'</span></div>':'';
-  document.getElementById('acts').innerHTML=c.its.length?Object.keys(ZAP).map(n=>'<button class="zb" onclick="zap(\''+n+'\')">'+IC_WA+'Enviar pro '+n+'</button>').join('')+'<button class="pb" onclick="proposta()">'+IC_DOC+'Gerar proposta em PDF</button>':'';}
+  document.getElementById('acts').innerHTML=c.its.length?Object.keys(ZAP).map(n=>'<button class="zb" onclick="zap(\''+n+'\')">'+IC_WA+n+'</button>').join('')+'<button class="pb" onclick="proposta()">'+IC_DOC+'Gerar proposta em PDF</button>':'';}
 function setPlano(m){plano=m;save();renderCart();}
 function openCart(){document.getElementById('cart').classList.add('open');document.getElementById('ov').classList.add('open');}
 function closeCart(){document.getElementById('cart').classList.remove('open');document.getElementById('ov').classList.remove('open');}
@@ -323,7 +323,7 @@ function proposta(){const c=calc();const w=window.open('','_blank');if(!w){toast
     +'<div class="meta"><div>Data<b>'+d.toLocaleDateString('pt-BR')+'</b></div><div>Válida até<b>'+val.toLocaleDateString('pt-BR')+'</b></div><div>Plano<b>'+plano+' meses</b></div><div>Pontos<b>'+c.its.length+'</b></div><div>Alcance<b>'+k(c.fluxo)+' pessoas/mês</b></div></div>'
     +'<table><thead><tr><th>#</th><th></th><th>Ponto</th><th class="r">Fluxo/mês</th><th class="r">Tabela</th><th class="r">Seu valor/mês</th></tr></thead><tbody>'+rows+'</tbody></table>'
     +'<div class="tot"><div><span>Subtotal</span><span>'+brl(c.bruto)+'</span></div>'+(c.pQtd?'<div class="d"><span>Desconto '+c.pQtd+'% ('+c.eleg.length+' pontos)</span><span>− '+brl(c.dQtd)+'</span></div>':'')+(c.p12?'<div class="d"><span>Plano 12 meses +'+c.p12+'%</span><span>− '+brl(c.d12)+'</span></div>':'')+'<div class="t"><span>Total mensal</span><span>'+brl(c.mensal)+'</span></div><div><span>Total do contrato ('+plano+' meses)</span><span>'+brl(c.contrato)+'</span></div></div>'
-    +'<div class="ft"><b>Como funciona:</b> sua marca é exibida nas telas dos pontos escolhidos, todos os dias, no horário de funcionamento de cada local. Produção da arte inclusa. '+(c.sc.length?'Pontos "sob consulta" serão orçados à parte. ':'')+'Valores mensais, sujeitos a disponibilidade do ponto.<br><b>ADmídia</b> · Tubarão/SC · '+(ZAP.Davi?'WhatsApp (Davi) +55 '+ZAP.Davi+' · ':'')+(ZAP.Matheus?'WhatsApp (Matheus) +55 '+ZAP.Matheus:'')+'</div>'
+    +'<div class="ft"><b>Como funciona:</b> sua marca é exibida nas telas dos pontos escolhidos, todos os dias, no horário de funcionamento de cada local. Produção da arte inclusa. '+(c.sc.length?'Pontos "sob consulta" serão orçados à parte. ':'')+'Valores mensais, sujeitos a disponibilidade do ponto.<br><b>ADmídia</b> · Tubarão/SC · '+Object.entries(ZAP).filter(e=>e[1]).map(e=>'WhatsApp '+e[0]+': ('+e[1].slice(0,2)+') '+e[1].slice(2,7)+'-'+e[1].slice(7)).join(' · ')+'</div>'
     +'<script>window.onload=()=>setTimeout(()=>window.print(),600)<\/script></body></html>');w.document.close();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart();});
 </script>
