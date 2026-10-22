@@ -54,13 +54,13 @@ a{color:inherit}
 @media(max-width:600px){.lg{width:118px;height:64px}.ltrack{gap:28px}}
 @media(prefers-reduced-motion:reduce){.ltrack{animation:none}}
 .eb .wrap{max-width:1240px;margin:0 auto;padding:70px 20px 10px}
-.eb-top{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:34px}
+.eb-top{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;margin-bottom:40px}
 .eb-badge{display:inline-flex;align-items:center;gap:8px;background:#eaf5ff;color:var(--blue);font-size:13px;font-weight:600;padding:7px 14px;border-radius:999px;margin-bottom:16px}
 .eb-badge span{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 0 #0092ff88;animation:pls 1.8s infinite}
 @keyframes pls{0%{box-shadow:0 0 0 0 #0092ff88}70%{box-shadow:0 0 0 10px #0092ff00}100%{box-shadow:0 0 0 0 #0092ff00}}
 .eb-txt p{color:#55627a;font-size:17px;line-height:1.6;margin:0 0 26px;max-width:520px}
-.eb-hero{position:relative}
-.eb-hero img{width:100%;aspect-ratio:10/9;object-fit:cover;border-radius:24px;display:block;box-shadow:0 30px 70px #000e2926}
+.eb-hero{position:relative;justify-self:end;width:min(430px,100%)}
+.eb-hero img{width:100%;aspect-ratio:1327/1185;object-fit:cover;border-radius:24px;display:block;box-shadow:0 30px 70px #000e2926}
 .eb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .eb-c b{display:block;margin-top:14px;font-size:18px;font-weight:700;letter-spacing:-.02em;color:#0b1730}
 .eb-c p{margin:4px 0 0;color:#6b7891;font-size:14px;line-height:1.5}
@@ -68,7 +68,7 @@ a{color:inherit}
 .eb-ph img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9)}
 .eb-c:hover .eb-ph{transform:translateY(-8px);box-shadow:0 26px 50px #000e292e}
 .eb-tg{position:absolute;left:12px;top:12px;background:#0b1730d9;color:#fff;font-size:12px;font-weight:600;padding:6px 11px;border-radius:999px;backdrop-filter:blur(6px)}
-@media(max-width:900px){.eb-top,.eb-grid{grid-template-columns:1fr}.eb-top{gap:28px}}
+@media(max-width:900px){.eb-top,.eb-grid{grid-template-columns:1fr}.eb-top{gap:28px}.eb-hero{justify-self:center;width:min(380px,100%)}}
 .contato{padding:40px 20px 30px}
 .cwrap{position:relative;max-width:1180px;margin:0 auto;border-radius:32px;overflow:hidden;background:linear-gradient(135deg,#0092FF 0%,#0070e0 55%,#0052b8 100%);box-shadow:0 30px 70px #0092ff40}
 .cbg{position:absolute;inset:0;background:radial-gradient(45% 80% at 100% 0%,#ffffff40,transparent 60%),radial-gradient(40% 70% at 0% 100%,#00b4ff55,transparent 65%)}
@@ -246,7 +246,7 @@ h2{font-size:clamp(28px,3.6vw,44px);line-height:1.08;letter-spacing:-.035em;marg
       <p>Telas nos elevadores dos principais residenciais e comerciais da cidade. Um público que sobe e desce todos os dias, olhando pra sua marca. Garanta seu espaço na pré-venda.</p>
       <button class="btn p" onclick="zapPreVenda()">Quero garantir na pré-venda</button>
     </div>
-    <div class="eb-hero"><img src="embreve/elevador.jpg" alt="Tela digital no elevador"><span class="capa-tag">Como vai ficar: telas nos elevadores</span></div>
+    <div class="eb-hero"><img src="embreve/elevador_v2.jpg" alt="Tela digital no elevador"><span class="capa-tag">Como vai ficar: telas nos elevadores</span></div>
   </div>
   <div class="eb-grid">
     <div class="eb-c"><div class="eb-ph"><img src="embreve/villapark.jpg" alt="Residencial Villa Park" loading="lazy"><span class="eb-tg">Em breve</span></div><b>Residencial Villa Park</b><p>O maior residencial de Tubarão.</p></div>
@@ -306,7 +306,7 @@ h2{font-size:clamp(28px,3.6vw,44px);line-height:1.08;letter-spacing:-.035em;marg
 const ZAP={ 'Comercial 1':'48991079940', 'Comercial 2':'48999292439' };   // Comercial 1 = Davi · Comercial 2 = Matheus            // números com DDD, só dígitos. Ex: '48999998888'
 const DESC_QTD={min:4,pct:20};                    // 4 ou mais pontos elegíveis → 20%
 const DESC_12M=7;                                 // plano 12 meses → +7%
-const BUILD='1021-2138';
+const BUILD='1021-2143';
 (function(){async function chk(){try{const r=await fetch('version.txt?ts='+Date.now(),{cache:'no-store'});if(!r.ok)return;const v=(await r.text()).trim();if(v&&BUILD.indexOf('__')<0&&v!==BUILD&&!sessionStorage.getItem('rl_'+v)){sessionStorage.setItem('rl_'+v,'1');location.replace(location.pathname+'?v='+v+location.hash);}}catch(_){}}chk();document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')chk();});})();
 const PLANOS=[6,12];
 const IC_WA='<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 5.83 2.42 8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.02 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z"/></svg>';
