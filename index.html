@@ -92,6 +92,8 @@ a{color:inherit}
 .card:hover{transform:translateY(-3px)}
 .flip{display:grid;height:100%;transition:transform .6s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
 .card.vira .flip{transform:rotateY(180deg)}
+.card.vira .front,.card:not(.vira) .back{pointer-events:none}
+.back{cursor:pointer}
 .face{grid-area:1/1;background:#fff;border-radius:18px;overflow:hidden;border:1px solid #e8eef6;box-shadow:0 1px 3px #000e290d;display:flex;flex-direction:column;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:box-shadow .2s}
 .card:hover .face{box-shadow:0 16px 36px #000e2914}
 .back{transform:rotateY(180deg);padding:18px 18px 16px;background:linear-gradient(160deg,#fff 0%,#f3f9ff 100%)}
@@ -297,10 +299,10 @@ function card(p){const on=SEL.has(p.id);
   const preco=p.valor?'<div class="pr">'+brl(p.valor)+'<small>/mês</small></div>':'<div class="pr sc">Sob consulta</div>';
   const front='<div class="face front" onclick="virar('+p.id+')"><div class="ph"><img loading="lazy" src="'+p.foto+'" alt="">'+(p.fluxo?'<span class="fl">'+k(p.fluxo)+' pessoas/mês</span>':'')+'</div><div class="bd"><div class="ct">'+esc(p.cat)+'</div><div class="nm">'+esc(p.nome)+'</div><div class="ad" title="'+esc(p.end)+'">'+esc(p.end)+'</div>'+(p.nd?'<div class="tag">Valor fixo · sem desconto</div>':'')+'<div class="mais">Ver detalhes</div><div class="row">'+preco+btn+'</div></div></div>';
   const info=[['Categoria',p.cat],['Endereço',p.end],['Fluxo',p.fluxo?Number(p.fluxo).toLocaleString('pt-BR')+' pessoas/mês':'—'],['Telas',p.telas?p.telas+(p.telas>1?' telas':' tela'):(p.led?'Painel de LED':'Tela indoor')],['Valor',p.valor?brl(p.valor)+'/mês':'Sob consulta'],['Desconto',p.nd?'Valor fixo, sem desconto':'Entra no desconto de pacote']];
-  const back='<div class="face back"><div class="bk-top"><div><div class="ct">'+esc(p.cat)+'</div><div class="nm">'+esc(p.nome)+'</div></div><button class="x2" onclick="virar('+p.id+')" aria-label="Voltar">✕</button></div>'
+  const back='<div class="face back" onclick="virar('+p.id+')"><div class="bk-top"><div><div class="ct">'+esc(p.cat)+'</div><div class="nm">'+esc(p.nome)+'</div></div><button class="x2" aria-label="Voltar">✕</button></div>'
     +(p.desc?'<div class="ds">'+esc(p.desc)+'</div>':'<div class="ds vz">Descrição do local em breve.</div>')
     +'<dl>'+info.map(r=>'<dt>'+r[0]+'</dt><dd>'+esc(r[1])+'</dd>').join('')+'</dl>'
-    +'<div class="bk-acts"><button class="lk" onclick="focusP('+p.id+')">Ver no mapa</button><span style="flex:1"></span>'+btn+'</div></div>';
+    +'<div class="bk-acts"><button class="lk" onclick="event.stopPropagation();focusP('+p.id+')">Ver no mapa</button><span style="flex:1"></span>'+btn+'</div></div>';
   return '<div class="card '+(on?'picked ':'')+(VIRADO.has(p.id)?'vira':'')+'" id="c'+p.id+'"><div class="flip">'+front+back+'</div></div>';}
 const VIRADO=new Set();
 function virar(id){const c=document.getElementById('c'+id);if(!c)return;if(VIRADO.has(id))VIRADO.delete(id);else VIRADO.add(id);c.classList.toggle('vira',VIRADO.has(id));}
