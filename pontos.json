@@ -5,14 +5,15 @@
   "cat": "Academias",
   "end": "Av. Marcolino Martins Cabral, 2249 - Centro, Tubarão - SC",
   "fluxo": 17000,
-  "valor": 220,
+  "valor": 187.0,
   "telas": null,
   "foto": "fotos/01.jpg",
   "lat": -28.480785,
   "lng": -49.002539,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 220
  },
  {
   "id": 2,
@@ -20,14 +21,15 @@
   "cat": "Academias",
   "end": "Av. Marcolino Martins Cabral, 2525 - Aeroporto, Tubarão - SC",
   "fluxo": 20000,
-  "valor": 220,
+  "valor": 187.0,
   "telas": null,
   "foto": "fotos/02.jpg",
   "lat": -28.474524,
   "lng": -48.995122,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 220
  },
  {
   "id": 3,
@@ -35,14 +37,15 @@
   "cat": "Academias",
   "end": "Av. Pres. Getúlio Vargas, 2233 - Centro, Tubarão - SC",
   "fluxo": 17000,
-  "valor": 150,
+  "valor": 127.5,
   "telas": null,
   "foto": "fotos/03.jpg",
   "lat": -28.468725,
   "lng": -48.991916,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 150
  },
  {
   "id": 4,
@@ -50,14 +53,15 @@
   "cat": "Academias",
   "end": "R. Gen. Osvaldo Pinto da Veiga, 673 - Centro, Capivari de Baixo - SC, 88745- 000",
   "fluxo": 5000,
-  "valor": 90,
+  "valor": 76.5,
   "telas": null,
   "foto": "fotos/04.jpg",
   "lat": -28.452977,
   "lng": -48.957387,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 90
  },
  {
   "id": 5,
@@ -65,14 +69,15 @@
   "cat": "Academias",
   "end": "R. João Fernandes Lima, 476 - Vila Esperança, Tubarão - SC",
   "fluxo": 2000,
-  "valor": 180,
+  "valor": 153.0,
   "telas": null,
   "foto": "fotos/05.jpg",
   "lat": -28.463331,
   "lng": -49.015263,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 180
  },
  {
   "id": 6,
@@ -80,14 +85,15 @@
   "cat": "Academias",
   "end": "R. Simeão Esmeraldino de Menezes, 728 - Humaitá, Tubarão - SC",
   "fluxo": 5000,
-  "valor": 110,
+  "valor": 93.5,
   "telas": null,
   "foto": "fotos/06.jpg",
   "lat": -28.47341,
   "lng": -49.012231,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 110
  },
  {
   "id": 7,
@@ -95,14 +101,15 @@
   "cat": "Academias",
   "end": "R. Cap. Alexandre de Sá, 289 - Dehon, Tubarão - SC",
   "fluxo": 5000,
-  "valor": 120,
+  "valor": 102.0,
   "telas": null,
   "foto": "fotos/07.jpg",
   "lat": -28.48217,
   "lng": -49.018008,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 120
  },
  {
   "id": 8,
@@ -110,14 +117,15 @@
   "cat": "Academias",
   "end": "R. São João, 1535 - São João Margem Esquerda, Tubarão - SC",
   "fluxo": 6000,
-  "valor": 120,
+  "valor": 102.0,
   "telas": null,
   "foto": "fotos/08.jpg",
   "lat": -28.471289,
   "lng": -49.033941,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 120
  },
  {
   "id": 9,
@@ -125,14 +133,15 @@
   "cat": "Padarias & cafés",
   "end": "R. Luís Corrêa de Souza, 200 - Dehon, Tubarão - SC",
   "fluxo": 15000,
-  "valor": 190,
+  "valor": 161.5,
   "telas": null,
   "foto": "fotos/09.jpg",
   "lat": -28.478049,
   "lng": -49.018593,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 190
  },
  {
   "id": 10,
@@ -140,14 +149,15 @@
   "cat": "Padarias & cafés",
   "end": "R. José Manoel Mendes - São Bernardo, Tubarão - SC",
   "fluxo": 15000,
-  "valor": 99,
+  "valor": 84.15,
   "telas": 1,
   "foto": "fotos/10.jpg",
   "lat": -28.458672,
   "lng": -49.030452,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 99
  },
  {
   "id": 11,
@@ -155,14 +165,15 @@
   "cat": "Padarias & cafés",
   "end": "R. Wenceslau Bráz, 353 - Vila Moema, Tubarão - SC",
   "fluxo": 15000,
-  "valor": 99,
+  "valor": 84.15,
   "telas": 1,
   "foto": "fotos/11.jpg",
   "lat": -28.479602,
   "lng": -48.995869,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 99
  },
  {
   "id": 12,
@@ -170,14 +181,15 @@
   "cat": "Padarias & cafés",
   "end": "R. Wenceslau Bráz, 299 - Vila Moema, Tubarão - SC",
   "fluxo": 10000,
-  "valor": 150,
+  "valor": 127.5,
   "telas": 2,
   "foto": "fotos/12.jpg",
   "lat": -28.479683,
   "lng": -48.995696,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 150
  },
  {
   "id": 13,
@@ -185,14 +197,15 @@
   "cat": "Padarias & cafés",
   "end": "R. Joaquim Faraco, 95 - Humaitá, Tubarão - SC",
   "fluxo": 10000,
-  "valor": 90,
+  "valor": 76.5,
   "telas": null,
   "foto": "fotos/13.jpg",
   "lat": -28.470773,
   "lng": -49.013228,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 90
  },
  {
   "id": 14,
@@ -200,14 +213,15 @@
   "cat": "Padarias & cafés",
   "end": "Av. Pedro Zapelini, 1404 - Centro, Tubarão - SC",
   "fluxo": 12000,
-  "valor": 90,
+  "valor": 76.5,
   "telas": null,
   "foto": "fotos/14.jpg",
   "lat": -28.489714,
   "lng": -49.004258,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 90
  },
  {
   "id": 15,
@@ -215,14 +229,15 @@
   "cat": "Padarias & cafés",
   "end": "R. Silvio Búrigo, 1239 - Monte Castelo, Tubarão - SC",
   "fluxo": 14000,
-  "valor": 160,
+  "valor": 136.0,
   "telas": null,
   "foto": "fotos/15.jpg",
   "lat": -28.498902,
   "lng": -49.026174,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 160
  },
  {
   "id": 16,
@@ -230,14 +245,15 @@
   "cat": "Padarias & cafés",
   "end": "Rua Padre Bernardo Freuser, 306 - Hospital Nossa Senhora da Conceição, Tubarão - SC",
   "fluxo": 12000,
-  "valor": 180,
+  "valor": 153.0,
   "telas": null,
   "foto": "fotos/16.jpg",
   "lat": -28.480763,
   "lng": -49.004628,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 180
  },
  {
   "id": 17,
@@ -245,14 +261,15 @@
   "cat": "Padarias & cafés",
   "end": "R. Altamiro Guimarães, 103 - Centro, Tubarão - SC",
   "fluxo": 16000,
-  "valor": 190,
+  "valor": 161.5,
   "telas": null,
   "foto": "fotos/17.jpg",
   "lat": -28.486235,
   "lng": -49.009339,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 190
  },
  {
   "id": 18,
@@ -260,14 +277,15 @@
   "cat": "Padarias & cafés",
   "end": "Av. Marcolino Martins Cabral, 1133 - Centro, Tubarão - SC",
   "fluxo": 8000,
-  "valor": 90,
+  "valor": 76.5,
   "telas": null,
   "foto": "fotos/18.jpg",
   "lat": -28.480866,
   "lng": -49.002366,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 90
  },
  {
   "id": 19,
@@ -275,14 +293,15 @@
   "cat": "Padarias & cafés",
   "end": "R. Gen. Osvaldo Pinto da Veiga, 971-975 - Centro, Capivari de Baixo - SC",
   "fluxo": 15000,
-  "valor": 80,
+  "valor": 68.0,
   "telas": null,
   "foto": "fotos/19.jpg",
   "lat": -28.453058,
   "lng": -48.957214,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 80
  },
  {
   "id": 20,
@@ -290,14 +309,15 @@
   "cat": "Padarias & cafés",
   "end": "Av. Patrício Lima, 1616 - Humaitá de Cima, Tubarão - SC",
   "fluxo": 15000,
-  "valor": 180,
+  "valor": 153.0,
   "telas": null,
   "foto": "fotos/20.jpg",
   "lat": -28.460595,
   "lng": -49.02409,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 180
  },
  {
   "id": 21,
@@ -305,14 +325,15 @@
   "cat": "Postos",
   "end": "Av. Patrício Lima, 1134 - Humaitá, Tubarão - SC",
   "fluxo": 15000,
-  "valor": 180,
+  "valor": 153.0,
   "telas": null,
   "foto": "fotos/21.jpg",
   "lat": -28.470007,
   "lng": -49.014343,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 180
  },
  {
   "id": 22,
@@ -320,14 +341,15 @@
   "cat": "Postos",
   "end": "Av. Patrício Lima, 1850 - Humaitá de Cima, Tubarão - SC",
   "fluxo": 8000,
-  "valor": 110,
+  "valor": 93.5,
   "telas": null,
   "foto": "fotos/22.jpg",
   "lat": -28.460676,
   "lng": -49.023917,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 110
  },
  {
   "id": 23,
@@ -335,14 +357,15 @@
   "cat": "Postos",
   "end": "Estr. Geral da Guarda, 2300 - São João Margem Direita, Md - SC, 88702- 704",
   "fluxo": 8000,
-  "valor": 110,
+  "valor": 93.5,
   "telas": null,
   "foto": "fotos/23.jpg",
   "lat": -28.47287,
   "lng": -49.050077,
   "aprox": true,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 110
  },
  {
   "id": 24,
@@ -350,14 +373,15 @@
   "cat": "Postos",
   "end": "Av. Marcolino Martins Cabral, 1900 - Vila Moema, Tubarão - SC",
   "fluxo": 12000,
-  "valor": 130,
+  "valor": 110.5,
   "telas": null,
   "foto": "fotos/24.jpg",
   "lat": -28.478507,
   "lng": -48.999336,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 130
  },
  {
   "id": 25,
@@ -365,14 +389,15 @@
   "cat": "Postos",
   "end": "Av. Marcolino Martins Cabral, 2644 - Vila Moema, Tubarão - SC",
   "fluxo": 10000,
-  "valor": 220,
+  "valor": 187.0,
   "telas": null,
   "foto": "fotos/25.jpg",
   "lat": -28.477102,
   "lng": -48.997046,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 220
  },
  {
   "id": 26,
@@ -380,14 +405,15 @@
   "cat": "Postos",
   "end": "Av. Pres. Tancredo Neves, 100 - Revoredo, Tubarão - SC",
   "fluxo": 12000,
-  "valor": 120,
+  "valor": 102.0,
   "telas": null,
   "foto": "fotos/26.jpg",
   "lat": -28.466037,
   "lng": -48.995332,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 120
  },
  {
   "id": 27,
@@ -395,14 +421,15 @@
   "cat": "Edifícios comerciais",
   "end": "Av. Marcolino Martins Cabral, 2644 - Aeroporto, Tubarão - SC",
   "fluxo": 5000,
-  "valor": 220,
+  "valor": 187.0,
   "telas": null,
   "foto": "fotos/27.jpg",
   "lat": -28.475714,
   "lng": -48.994983,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 220
  },
  {
   "id": 28,
@@ -410,14 +437,15 @@
   "cat": "Edifícios comerciais",
   "end": "Rua Tubalcain Faraco, 150 - Centro, Tubarão - SC",
   "fluxo": 20000,
-  "valor": 190,
+  "valor": 161.5,
   "telas": null,
   "foto": "fotos/28.jpg",
   "lat": -28.482905,
   "lng": -49.006715,
   "aprox": true,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 190
  },
  {
   "id": 29,
@@ -440,14 +468,15 @@
   "cat": "Diversos",
   "end": "R. Candido Cesar Freire Leão, 223 - Vila Moema, Tubarão - SC",
   "fluxo": 8000,
-  "valor": 120,
+  "valor": 102.0,
   "telas": null,
   "foto": "fotos/30.jpg",
   "lat": -28.482197,
   "lng": -48.998731,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 120
  },
  {
   "id": 31,
@@ -455,14 +484,15 @@
   "cat": "Diversos",
   "end": "R. Andrino Sales Borges, 77 - São Clemente, Tubarão - SC",
   "fluxo": 15000,
-  "valor": 120,
+  "valor": 102.0,
   "telas": null,
   "foto": "fotos/31.jpg",
   "lat": -28.494278,
   "lng": -48.993428,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 120
  },
  {
   "id": 32,
@@ -470,14 +500,15 @@
   "cat": "Diversos",
   "end": "Av. Nilton Augusto Sachetti, 500 - Santo André, Capivari de Baixo - SC",
   "fluxo": 30000,
-  "valor": 190,
+  "valor": 161.5,
   "telas": null,
   "foto": "fotos/32.jpg",
   "lat": -28.460653,
   "lng": -48.979922,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 190
  },
  {
   "id": 33,
@@ -485,14 +516,15 @@
   "cat": "Diversos",
   "end": "Av. Pedro Zapelini, 1870 - Centro, Tubarão - SC",
   "fluxo": 13000,
-  "valor": 150,
+  "valor": 127.5,
   "telas": null,
   "foto": "fotos/33.jpg",
   "lat": -28.489795,
   "lng": -49.004085,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 150
  },
  {
   "id": 34,
@@ -500,14 +532,15 @@
   "cat": "Diversos",
   "end": "Av. Marcolino Martins Cabral, 4085 - Passagem, Tubarão - SC",
   "fluxo": 3000,
-  "valor": 220,
+  "valor": 187.0,
   "telas": null,
   "foto": "fotos/34.jpg",
   "lat": -28.469966,
   "lng": -48.9866,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 220
  },
  {
   "id": 35,
@@ -515,14 +548,15 @@
   "cat": "Diversos",
   "end": "R. Padre Geraldo Spettmann, 544 - Humaitá, Tubarão - SC",
   "fluxo": 3000,
-  "valor": 150,
+  "valor": 127.5,
   "telas": null,
   "foto": "fotos/35.jpg",
   "lat": -28.474312,
   "lng": -49.014924,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 150
  },
  {
   "id": 36,
@@ -530,14 +564,15 @@
   "cat": "Diversos",
   "end": "R. Manaus, 87 - Aeroporto, Tubarão - SC",
   "fluxo": 18000,
-  "valor": 190,
+  "valor": 161.5,
   "telas": null,
   "foto": "fotos/36.jpg",
   "lat": -28.476173,
   "lng": -48.992127,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 190
  },
  {
   "id": 37,
@@ -545,14 +580,15 @@
   "cat": "Diversos",
   "end": "Av. Marcolino Martins Cabral, 2949 - Aeroporto, Tubarão - SC",
   "fluxo": 6000,
-  "valor": 120,
+  "valor": 102.0,
   "telas": null,
   "foto": "fotos/37.jpg",
   "lat": -28.475795,
   "lng": -48.99481,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 120
  },
  {
   "id": 38,
@@ -560,14 +596,15 @@
   "cat": "Diversos",
   "end": "Av. Patrício Lima, 38 - Centro, Tubarão - SC",
   "fluxo": 2000,
-  "valor": 89,
+  "valor": 75.65,
   "telas": null,
   "foto": "fotos/38.jpg",
   "lat": -28.477207,
   "lng": -49.007707,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 89
  },
  {
   "id": 39,
@@ -590,14 +627,15 @@
   "cat": "Salões & barbearias",
   "end": "R. João Rodrigues Martins, 315 - Centro, Capivari de Baixo - SC",
   "fluxo": 1000,
-  "valor": 90,
+  "valor": 76.5,
   "telas": null,
   "foto": "fotos/40.jpg",
   "lat": -28.450476,
   "lng": -48.961422,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 90
  },
  {
   "id": 41,
@@ -605,14 +643,15 @@
   "cat": "Salões & barbearias",
   "end": "Av. Marcolino Martins Cabral, 2157 - Vila Moema, Tubarão - SC",
   "fluxo": 1500,
-  "valor": 150,
+  "valor": 127.5,
   "telas": null,
   "foto": "fotos/41.jpg",
   "lat": -28.478445,
   "lng": -48.999046,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 150
  },
  {
   "id": 42,
@@ -620,14 +659,15 @@
   "cat": "Salões & barbearias",
   "end": "Av. Marcolino Martins Cabral, 4085 - Passagem, Tubarão - SC",
   "fluxo": 1300,
-  "valor": 120,
+  "valor": 102.0,
   "telas": null,
   "foto": "fotos/42.jpg",
   "lat": -28.470047,
   "lng": -48.986427,
   "aprox": false,
   "nd": false,
-  "led": false
+  "led": false,
+  "valor_tabela_antiga": 120
  },
  {
   "id": 43,
